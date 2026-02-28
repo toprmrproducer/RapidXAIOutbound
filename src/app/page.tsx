@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative selection:bg-violet-500/30 overflow-x-hidden bg-noise">
+    <main className="min-h-screen bg-[#F5F6F7] relative selection:bg-violet-500/20 overflow-x-hidden bg-noise">
       <Navbar />
 
       <Hero />

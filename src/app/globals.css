@@ -1,24 +1,44 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────
+   THEME — only 2 fonts
+───────────────────────────────────────────────── */
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
-  --font-display: 'Clash Display', var(--font-dm-sans), sans-serif;
-  --font-mono: var(--font-mono), 'JetBrains Mono', monospace;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-display: 'Geist', var(--font-inter), sans-serif;
 }
 
+/* ─────────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────────── */
 :root {
-  --background: #030308;
-  --foreground: #f1f5f9;
-  --primary: #7c6af5;
-  --primary-foreground: #ffffff;
-  --accent: #12121f;
-  --accent-foreground: #e2e8f0;
+  /* Backgrounds */
+  --bg-page: #F5F6F7;
+  /* off-white page base (Helcyn) */
+  --bg-white: #FFFFFF;
+  /* white section / card surface */
+  --bg-dark: #18181B;
+  /* charcoal inverted card / nav */
+
+  /* Text */
+  --text-primary: #18181B;
+  /* headings, key info */
+  --text-body: #52525B;
+  /* body copy */
+  --text-muted: #71717A;
+  /* descriptions, subtext */
+  --text-faint: #A1A1AA;
+  /* captions, tags, labels */
+
+  /* Border */
+  --border: #E4E4E7;
+  /* card border — visible, not loud */
+
+  /* Accent */
+  --accent: #7c6af5;
+  /* violet — only brand color */
+  --accent-light: #ede9fe;
+  /* violet/10 background */
 }
 
 /* ─────────────────────────────────────────────────
@@ -34,43 +54,37 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-page);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 16px;
 }
 
 /* ─────────────────────────────────────────────────
-   DISPLAY FONT UTILITY
+   GEIST — display / headline font
 ───────────────────────────────────────────────── */
 .font-display {
-  font-family: 'Clash Display', var(--font-dm-sans), sans-serif;
-  letter-spacing: -0.03em;
-}
-
-.font-mono-premium {
-  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-family: 'Geist', var(--font-inter), sans-serif;
+  letter-spacing: -0.04em;
 }
 
 /* ─────────────────────────────────────────────────
-   DOT GRID BACKGROUND
-   Subtle dot matrix — the signature SaaS texture
+   DOT GRID — hero texture with dark dots on off-white
 ───────────────────────────────────────────────── */
 .bg-dot-grid {
-  background-image: radial-gradient(circle,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(circle, #D4D4D8 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* ─────────────────────────────────────────────────
-   NOISE GRAIN OVERLAY
-   Ultra fine grain at ~3% — invisible individually,
-   adds that expensive editorial/printed quality
+   NOISE GRAIN — invisible individually, adds
+   expensive editorial printed-paper feel (~2%)
 ───────────────────────────────────────────────── */
 .bg-noise::after {
   content: "";
@@ -78,186 +92,175 @@ body {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ─────────────────────────────────────────────────
-   AURORA — ambient deep violet/indigo glow
-   Applied to hero area
+   CARD — white surface with visible border + shadow
+   This is the ONLY card style used. No glassmorphism.
 ───────────────────────────────────────────────── */
-.aurora {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E4E4E7;
+  border-radius: 1.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.aurora::before {
-  content: "";
-  position: absolute;
-  top: -30%;
-  left: 25%;
-  width: 60%;
-  height: 80%;
-  background: radial-gradient(ellipse at center,
-      rgba(109, 86, 235, 0.18) 0%,
-      rgba(99, 102, 241, 0.08) 40%,
-      transparent 70%);
-  filter: blur(80px);
-  animation: aurora-shift 12s ease-in-out infinite alternate;
-}
-
-.aurora::after {
-  content: "";
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 50%;
-  height: 60%;
-  background: radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.12) 0%,
-      rgba(139, 92, 246, 0.06) 50%,
-      transparent 75%);
-  filter: blur(100px);
-  animation: aurora-shift 16s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes aurora-shift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(-3%, 5%) scale(1.08);
-  }
-
-  100% {
-    transform: translate(3%, -3%) scale(0.96);
-  }
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
 }
 
 /* ─────────────────────────────────────────────────
-   GLASSMORPHISM
+   DARK CARD — inverted charcoal surface
+   Used for Pricing popular card, CTA block
 ───────────────────────────────────────────────── */
-.glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.glass-card {
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(32px) saturate(180%);
-  -webkit-backdrop-filter: blur(32px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top-color: rgba(255, 255, 255, 0.16);
-  border-left-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.card-dark {
+  background: #18181B;
+  border: 1px solid #27272A;
+  border-radius: 1.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 /* ─────────────────────────────────────────────────
-   SPOTLIGHT CARD — mouse-tracking glow
-   Use via JS to set --x/--y custom props
+   NAV PILL — floating dark pill navbar
 ───────────────────────────────────────────────── */
-.spotlight-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(124, 106, 245, 0.12),
-      transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.spotlight-card:hover::before {
-  opacity: 1;
+.pill-nav {
+  background: #18181B;
+  border-radius: 9999px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
 }
 
 /* ─────────────────────────────────────────────────
-   GLOW BLOBS — ambient background orbs
+   SECTION LABEL — bracket notation  └ LABEL ┐
 ───────────────────────────────────────────────── */
-.glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -1;
-  filter: blur(20px);
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
 /* ─────────────────────────────────────────────────
-   TEXT GRADIENTS
+   TEXT UTILITIES
 ───────────────────────────────────────────────── */
-.text-gradient-primary {
-  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #c4b5fd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.text-primary {
+  color: var(--text-primary);
 }
 
-.text-gradient-warm {
-  background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+.text-body {
+  color: var(--text-body);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-faint {
+  color: var(--text-faint);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-gradient-violet {
+  background: linear-gradient(135deg, #6d56eb 0%, #9b8af8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ─────────────────────────────────────────────────
-   ANIMATED GRADIENT BORDER
+   BUTTONS
 ───────────────────────────────────────────────── */
-.border-gradient {
-  position: relative;
-  background: transparent;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #18181B;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.9rem 2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-.border-gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(124, 106, 245, 0.6), rgba(168, 85, 247, 0.3), rgba(255, 255, 255, 0.05));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.btn-primary:hover {
+  background: #09090B;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  color: #18181B;
+  border: 1px solid #E4E4E7;
+  border-radius: 9999px;
+  padding: 0.9rem 2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #F4F4F5;
+  border-color: #D4D4D8;
+}
+
+/* Ghost on dark bg (inside card-dark) */
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  color: #18181B;
+  border-radius: 9999px;
+  padding: 0.9rem 2.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-white:hover {
+  background: #F4F4F5;
 }
 
 /* ─────────────────────────────────────────────────
-   SHIMMER BUTTON
+   ACCENT BADGE / PILL
 ───────────────────────────────────────────────── */
-.btn-shimmer {
-  position: relative;
-  overflow: hidden;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.btn-shimmer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-  pointer-events: none;
+.badge-violet {
+  background: #ede9fe;
+  color: #6d56eb;
+  border: 1px solid #ddd6fe;
 }
 
-.btn-shimmer:hover::after {
-  left: 150%;
+.badge-green {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
 }
 
 /* ─────────────────────────────────────────────────
@@ -267,7 +270,7 @@ body {
 
   75%,
   100% {
-    transform: scale(2);
+    transform: scale(2.2);
     opacity: 0;
   }
 }
@@ -277,16 +280,61 @@ body {
 }
 
 /* ─────────────────────────────────────────────────
-   SCROLL SHADOW (for marquee overflow)
+   FLOATING CARD ANIMATION
+───────────────────────────────────────────────── */
+@keyframes float-left {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-4deg);
+  }
+}
+
+@keyframes float-right {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+.animate-float-left {
+  animation: float-left 5s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: float-right 6s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────
+   CONNECTOR SHIMMER (HowItWorks)
+───────────────────────────────────────────────── */
+@keyframes shimmer-slide {
+  from {
+    left: -10%;
+  }
+
+  to {
+    left: 110%;
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   MARQUEE — brand strip
 ───────────────────────────────────────────────── */
 .marquee-fade {
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-/* ─────────────────────────────────────────────────
-   MARQUEE SCROLL ANIMATION
-───────────────────────────────────────────────── */
 @keyframes marquee-scroll {
   from {
     transform: translateX(0);
@@ -298,11 +346,31 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 32s linear infinite;
   display: flex;
   width: max-content;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* ─────────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
 }

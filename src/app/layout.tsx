@@ -1,39 +1,34 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+// Inter — body / subtext font
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "RapidXAI — Scale Your Revenue Momentum",
-  description: "The most cost-effective AI Inbound and Outbound voice agent solution in the Indian market.",
+  title: "RapidXAI — Book More Meetings, Automatically",
+  description:
+    "Enterprise-grade AI inbound and outbound voice agents. Your 24/7 receptionist and SDR — built for India.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Clash Display — Premium display font */}
+        {/* Geist — display / headline font from Vercel */}
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700,800,900&display=swap"
+          href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/style.css"
         />
       </head>
-      <body className={`${dmSans.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>

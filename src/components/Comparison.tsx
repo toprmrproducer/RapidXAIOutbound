@@ -3,71 +3,91 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
 
+const oldItems = [
+    "Costly and hard to scale teams",
+    "Missed calls outside business hours",
+    "Inconsistent following up with leads",
+    "Weeks to hire and train SDRs",
+    "Silos between comms and your CRM",
+];
+
+const newItems = [
+    "Market-breaking cost-effectiveness",
+    "24/7 Always-Available AI Receptionist",
+    "Persistent multi-step cadence follow-ups",
+    "Rapid deployment in weeks, not quarters",
+    "CRM-native: automatic notes & tasks",
+];
+
 export default function Comparison() {
     return (
-        <section className="py-24 relative z-10 px-6">
+        <section className="py-24 px-6 bg-[#F5F6F7]">
             <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">The Old Way vs. <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">RapidXAI Way</span></h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg">Stop losing revenue to slow follow-ups, missed calls, and expensive traditional teams.</p>
+
+                {/* Header */}
+                <div className="text-center mb-14">
+                    <h2 className="font-display font-extrabold text-[#18181B] tracking-tight mb-4 flex flex-col items-center gap-1">
+                        <span className="text-4xl md:text-5xl">What You're Doing Now</span>
+                        <span className="text-sm font-bold text-[#A1A1AA] uppercase tracking-[0.3em]">vs.</span>
+                        <span className="text-4xl md:text-5xl text-gradient-violet">What Actually Works</span>
+                    </h2>
+                    <p className="text-[#71717A] max-w-xl mx-auto text-lg">
+                        Stop losing revenue to slow follow-ups, missed calls, and expensive traditional teams.
+                    </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    {/* Old Way Card */}
+                {/* Cards */}
+                <div className="grid md:grid-cols-2 gap-6">
+
+                    {/* Old Way — white card, red accent */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="p-8 rounded-3xl border border-red-500/20 bg-red-500/5 backdrop-blur-sm hover:shadow-[0_0_40px_rgba(239,68,68,0.1)] transition-shadow duration-500"
+                        className="card p-10 flex flex-col"
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-semibold mb-6">
-                            <XCircle size={16} /> The Old Way
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wider mb-8 self-start">
+                            <XCircle size={14} />
+                            The Old Way
                         </div>
 
                         <ul className="space-y-5">
-                            {[
-                                "Costly and hard to scale teams",
-                                "Missed calls outside business hours",
-                                "Inconsistent following up with leads",
-                                "Weeks to hire and train SDRs",
-                                "Silos between comms and your CRM"
-                            ].map((item, i) => (
-                                <li key={i} className="flex flex-start gap-4 text-slate-300">
-                                    <span className="text-red-400 mt-1">✗</span>
-                                    <span>{item}</span>
+                            {oldItems.map((item, i) => (
+                                <li key={i} className="flex items-start gap-3">
+                                    <XCircle size={18} className="text-red-400 shrink-0 mt-0.5" />
+                                    <span className="text-[#52525B] text-[15px] leading-snug">{item}</span>
                                 </li>
                             ))}
                         </ul>
                     </motion.div>
 
-                    {/* New Way Card */}
+                    {/* RapidXAI Way — light lavender card */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="p-8 rounded-3xl glass-card relative overflow-hidden hover:shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-shadow duration-500"
+                        transition={{ delay: 0.12 }}
+                        className="rounded-[1.75rem] p-10 flex flex-col relative overflow-hidden"
+                        style={{ background: "linear-gradient(140deg, #ede9fe 0%, #f3f0ff 100%)", border: "1px solid #ddd6fe" }}
                     >
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[60px] rounded-full pointer-events-none" />
+                        {/* Soft violet radial wash top-right */}
+                        <div className="absolute top-0 right-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(109,86,235,0.08) 0%, transparent 70%)" }} />
 
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-sm font-semibold mb-6">
-                            <CheckCircle2 size={16} /> The RapidXAI Way
+                        <div className="relative z-10">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8 self-start" style={{ background: "#ddd6fe", border: "1px solid #c4b5fd", color: "#5b21b6" }}>
+                                <CheckCircle2 size={14} />
+                                The RapidXAI Way
+                            </div>
+
+                            <ul className="space-y-5">
+                                {newItems.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <CheckCircle2 size={18} className="shrink-0 mt-0.5" style={{ color: "#6d56eb" }} />
+                                        <span className="text-[#18181B] text-[15px] leading-snug font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-
-                        <ul className="space-y-5">
-                            {[
-                                "Market breaking cost-effectiveness",
-                                "24/7 Always Available Receptionist",
-                                "Persistent multi-step cadence follow-ups",
-                                "Rapid deployment in weeks, not quarters",
-                                "CRM-native: automatic notes & tasks"
-                            ].map((item, i) => (
-                                <li key={i} className="flex flex-start gap-3 text-white font-medium">
-                                    <CheckCircle2 size={20} className="text-indigo-400 shrink-0" />
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
                     </motion.div>
                 </div>
             </div>
