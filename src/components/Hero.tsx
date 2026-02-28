@@ -92,7 +92,7 @@ export default function Hero() {
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                     </span>
                     <span className="text-xs font-medium text-[#71717A]">
-                        Most cost-effective AI solution in India
+                        India's Most Cost-Effective Enterprise AI Voice Solution
                     </span>
                     <ArrowRight size={11} className="text-[#A1A1AA]" />
                 </motion.div>
@@ -101,7 +101,7 @@ export default function Hero() {
                 <div className="relative w-full max-w-5xl mx-auto">
 
                     {/* LEFT float card — Sales metric */}
-                    <div className="hidden lg:block absolute -left-16 top-6 animate-float-left z-0">
+                    <div className="hidden lg:block absolute -left-20 top-16 animate-float-left z-0">
                         <div
                             className="rounded-[1.5rem] p-5 w-60 text-left"
                             style={{
@@ -138,7 +138,7 @@ export default function Hero() {
                     </div>
 
                     {/* RIGHT float card — Outbound Swarm */}
-                    <div className="hidden lg:block absolute -right-16 top-14 animate-float-right z-0">
+                    <div className="hidden lg:block absolute -right-20 top-14 animate-float-right z-0">
                         <div
                             className="rounded-[1.5rem] p-5 w-60 text-left"
                             style={{
@@ -176,10 +176,9 @@ export default function Hero() {
                         transition={{ duration: 0.7, delay: 0.1 }}
                         className="relative z-10 font-display text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight text-[#18181B] leading-tight md:leading-[0.95] mb-8 mx-auto max-w-4xl"
                     >
-                        AI Receptionists
+                        AI Receptionists That Book
                         <br />
-                        That Book{" "}
-                        <span className="text-gradient-violet">Appointments.</span>
+                        <span className="text-gradient-violet">Appointments 24/7.</span>
                     </motion.h1>
                 </div>
 
@@ -190,7 +189,8 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-[#71717A] text-lg max-w-xl mb-10 leading-relaxed"
                 >
-                    Enterprise-grade AI inbound and outbound voice agents. Your always-on SDR and receptionist — built for speed, security, and scale.
+                    Enterprise-grade AI voice agents that answer calls, qualify leads, and book meetings automatically.
+                    Your always-on SDR and receptionist — built for reliability, security, and real growth.
                 </motion.p>
 
                 {/* CTAs */}
@@ -268,7 +268,7 @@ export default function Hero() {
                     transition={{ delay: 0.7 }}
                     className="mt-8 text-xs text-[#A1A1AA] tracking-wide"
                 >
-                    SOC2 compliant · 99.9% uptime · {"<"}1s response latency
+                    SOC2-ready · 99.9% uptime · Sub-second response time
                 </motion.p>
 
             </div>

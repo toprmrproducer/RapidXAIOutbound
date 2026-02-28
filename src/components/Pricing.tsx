@@ -8,7 +8,7 @@ const plans = [
         name: "Inbound Only",
         price: "₹7,000",
         per: "/mo",
-        description: "Perfect for businesses that need a 24/7 AI receptionist.",
+        description: "Ideal for businesses that want every inbound call answered and converted.",
         features: ["Always-on reception", "Lead Qualification", "Meeting Routing", "Email Notifications"],
         cta: "Start Inbound",
         popular: false,
@@ -17,7 +17,7 @@ const plans = [
         name: "Omnichannel",
         price: "₹25,000",
         per: "/mo",
-        description: "Unstoppable growth with inbound and outbound working together.",
+        description: "Inbound and outbound working together to maximize booked meetings.",
         features: ["Everything in Inbound & Outbound", "Shared Context Memory", "Advanced CRM Sync", "Dedicated Support Manager"],
         cta: "Claim 1000 Free Mins",
         popular: true,
@@ -26,7 +26,7 @@ const plans = [
         name: "Outbound Only",
         price: "₹20,000",
         per: "/mo",
-        description: "Targeted outreach driven by human-grade AI SDRs.",
+        description: "Targeted outbound campaigns powered by AI SDRs that follow up automatically.",
         features: ["Targeted Campaigns", "Automated Callbacks", "Re-engagement cadences", "SMS/WhatsApp follow-ups"],
         cta: "Start Outbound",
         popular: false,
@@ -51,11 +51,11 @@ export default function Pricing() {
                         <span className="text-[#7c6af5] text-xl font-light">┐</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight mb-4">
-                        Market-Breaking{" "}
+                        Simple, Transparent{" "}
                         <span className="text-[#71717A]">Pricing.</span>
                     </h2>
                     <p className="text-[#71717A] text-lg max-w-xl">
-                        The most cost-effective enterprise AI voice agents in the Indian market.
+                        Enterprise-grade AI voice agents at pricing built for growing businesses.
                     </p>
                 </motion.div>
 
@@ -72,8 +72,8 @@ export default function Pricing() {
                         >
                             <div
                                 className={`rounded-[1.75rem] p-8 flex flex-col h-full border transition-all duration-300 ${plan.popular
-                                        ? "bg-[#18181B] border-[#27272A] shadow-[0_20px_60px_rgba(0,0,0,0.18)] hover:shadow-[0_28px_80px_rgba(0,0,0,0.25)]"
-                                        : "bg-white border-[#E4E4E7] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.09)] hover:-translate-y-1"
+                                    ? "bg-[#18181B] border-[#27272A] shadow-[0_20px_60px_rgba(0,0,0,0.18)] hover:shadow-[0_28px_80px_rgba(0,0,0,0.25)]"
+                                    : "bg-white border-[#E4E4E7] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.09)] hover:-translate-y-1"
                                     }`}
                             >
                                 {/* Popular badge */}
@@ -112,8 +112,8 @@ export default function Pricing() {
 
                                 <button
                                     className={`w-full py-3.5 rounded-2xl font-semibold text-sm transition-all flex items-center justify-center gap-2 ${plan.popular
-                                            ? "bg-white text-[#18181B] hover:bg-gray-100"
-                                            : "border border-[#18181B] text-[#18181B] hover:bg-[#18181B] hover:text-white"
+                                        ? "bg-white text-[#18181B] hover:bg-gray-100"
+                                        : "border border-[#18181B] text-[#18181B] hover:bg-[#18181B] hover:text-white"
                                         }`}
                                 >
                                     {plan.cta}

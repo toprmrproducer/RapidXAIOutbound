@@ -17,7 +17,7 @@ export default function Footer() {
                             <span className="text-[#7c6af5]">AI</span>
                         </a>
                         <p className="text-sm text-[#71717A] leading-relaxed">
-                            Enterprise-grade AI that scales your revenue. Not follow.
+                            Enterprise-grade AI that helps you scale revenue — automatically.
                         </p>
                     </div>
 

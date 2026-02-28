@@ -29,13 +29,13 @@ export default function CTA() {
 
                     <div className="relative z-10">
                         <h2 className="font-display text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-[0.95] mb-6">
-                            Ready to Break Your
+                            Ready to Increase Your
                             <br />
-                            <span className="text-gradient-violet">Revenue Ceiling?</span>
+                            <span className="text-gradient-violet">Booked Meetings?</span>
                         </h2>
 
                         <p className="text-white/50 max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
-                            Stop losing leads to slow response times. Deploy your AI workforce today — watch your meeting booked rate double this quarter.
+                            Stop losing leads to slow response times. Deploy your AI today and start turning more calls into booked meetings this quarter.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

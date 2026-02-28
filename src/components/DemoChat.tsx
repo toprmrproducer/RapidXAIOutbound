@@ -231,7 +231,7 @@ function VoiceAgentCard() {
 
             {/* Peripheral stats */}
             <div className="mt-5 flex justify-center gap-8 opacity-50">
-                {["Latency: 12ms", "Precision: 99.9%", "AVA v5.2"].map((tag, i) => {
+                {["Latency: 12ms", "Precision: 99.9%", "Model: RapidXAI Agent"].map((tag, i) => {
                     const [label, val] = tag.split(": ");
                     return (
                         <div key={i} className="text-center">
@@ -269,7 +269,7 @@ export default function DemoChat() {
                         <span className="text-[#71717A]">Dialogue.</span>
                     </h2>
                     <p className="text-[#71717A] text-lg mb-8 leading-relaxed">
-                        Our AI doesn't sound robotic. It understands context, handles interruptions gracefully, and navigates complex conversations to drive prospects towards a booking.
+                        Our AI sounds natural and confident. It understands context, handles interruptions smoothly, and guides prospects toward booking a meeting.
                     </p>
                     <ul className="space-y-3">
                         {features.map((f) => (

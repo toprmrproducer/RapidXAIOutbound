@@ -147,7 +147,7 @@ export default function Metrics() {
             {/* Stat grid */}
             <div className="max-w-6xl mx-auto px-6 pt-16 pb-6">
                 <p className="text-center text-[#A1A1AA] text-[11px] font-bold tracking-[0.2em] uppercase mb-12">
-                    Real Numbers from Real Customers
+                    Real Results from Real Businesses
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#E4E4E7] border border-[#E4E4E7] rounded-2xl overflow-hidden">
                     {stats.map((s, i) => (

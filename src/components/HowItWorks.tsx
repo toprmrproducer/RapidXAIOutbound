@@ -132,7 +132,7 @@ const steps = [
         icon: ListChecks,
         number: "01",
         title: "Define Objectives",
-        description: "We map your sales process, ICP, and objections — then design the perfect conversational flows.",
+        description: "We study your sales process, ideal customer profile, and common objections — then design conversation flows that match your business.",
         iconBg: "bg-[#ede9fe] border-[#ddd6fe]",
         iconColor: "text-[#6d56eb]",
         numColor: "text-[#7c6af5]",
@@ -142,7 +142,7 @@ const steps = [
         icon: null,
         number: "02",
         title: "Train & Integrate",
-        description: "We ingest your knowledge base and sync the agent with your CRM, calendar, and call scripts.",
+        description: "We train the AI using your knowledge base and connect it to your CRM, calendar, and call scripts.",
         iconBg: "",
         iconColor: "",
         numColor: "text-indigo-500",
@@ -152,7 +152,7 @@ const steps = [
         icon: Rocket,
         number: "03",
         title: "Launch & Scale",
-        description: "Your AI workforce goes live. Watch inbound coverage hit 100% and meetings skyrocket.",
+        description: "Your AI goes live. Every call gets answered, and meetings start filling your calendar.",
         iconBg: "bg-emerald-50 border-emerald-100",
         iconColor: "text-emerald-600",
         numColor: "text-emerald-500",
@@ -177,8 +177,8 @@ export default function HowItWorks() {
                         <span className="text-[#7c6af5] text-xl font-light">┐</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight">
-                        Up and Running{" "}
-                        <span className="text-[#71717A]">in 3 Days.</span>
+                        Live in{" "}
+                        <span className="text-[#71717A]">48–72 Hours.</span>
                     </h2>
                 </motion.div>
 

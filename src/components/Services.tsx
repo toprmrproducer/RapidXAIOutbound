@@ -30,8 +30,8 @@ export default function Services() {
                 >
                     <SectionLabel text="Our Core Services" />
                     <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight">
-                        One AI That{" "}
-                        <span className="text-[#71717A]">Answers Every Call.</span>
+                        One AI Workforce.{" "}
+                        <span className="text-[#71717A]">Every Call Covered.</span>
                     </h2>
                 </motion.div>
 
@@ -50,7 +50,7 @@ export default function Services() {
                         </div>
                         <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">Inbound AI Agent</h3>
                         <p className="text-[#71717A] text-sm leading-relaxed mb-5">
-                            Never miss a call again. The AI picks up, asks the right questions, and books the meeting for you.
+                            Never miss another opportunity. The AI answers instantly, asks smart qualifying questions, and books meetings directly into your calendar.
                         </p>
 
                         <div className="flex flex-wrap items-center gap-1.5 mb-5">
@@ -67,11 +67,11 @@ export default function Services() {
                         <ul className="mt-auto space-y-2">
                             <li className="flex items-center gap-2 text-sm text-[#52525B]">
                                 <Check size={13} className="text-[#7c6af5] shrink-0" />
-                                Graceful handoff to your human team
+                                Seamless handoff to your team when needed
                             </li>
                             <li className="flex items-center gap-2 text-sm text-[#52525B]">
                                 <Check size={13} className="text-[#7c6af5] shrink-0" />
-                                CRM-native routing logic
+                                Smart CRM-based routing
                             </li>
                         </ul>
                     </motion.div>
@@ -97,7 +97,7 @@ export default function Services() {
                             </div>
                             <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">Outbound AI SDR</h3>
                             <p className="text-[#71717A] text-sm leading-relaxed mb-6 max-w-md">
-                                Your tireless SDR. Polite, persistent, impossible to forget to follow up. Drive campaigns at scale.
+                                A tireless SDR that never forgets to follow up. Polite, persistent outreach that runs campaigns at scale and turns conversations into meetings.
                             </p>
 
                             <div className="flex flex-wrap items-center gap-1.5 mb-6">
@@ -142,7 +142,7 @@ export default function Services() {
                             </div>
                             <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">CRM &amp; Calendar Sync</h3>
                             <p className="text-[#71717A] text-sm leading-relaxed">
-                                Natively integrates with HubSpot, Salesforce, and Google Calendar. Notes, statuses, meetings — synced automatically.
+                                Connects directly with HubSpot, Salesforce, and Google Calendar. Every note, status update, and meeting is synced automatically.
                             </p>
                         </div>
                         {/* Mini checklist */}
@@ -241,7 +241,7 @@ export default function Services() {
                             </div>
                             <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">Enterprise Security</h3>
                             <p className="text-[#71717A] text-sm leading-relaxed">
-                                SOC2-ready processes, end-to-end encryption, GDPR compliance, and dedicated priority support.
+                                Built with SOC2-ready processes, end-to-end encryption, GDPR compliance, and priority support for enterprise clients.
                             </p>
                         </div>
                     </motion.div>

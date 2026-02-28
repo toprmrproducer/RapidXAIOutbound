@@ -7,7 +7,7 @@ const benefits = [
     {
         icon: Clock,
         title: "24/7 Always Available",
-        desc: "Never miss a lead outside of business hours. Scale instantly without headcount.",
+        desc: "Never miss a lead outside business hours. Scale instantly without hiring more staff.",
         iconBg: "bg-[#ede9fe] border-[#ddd6fe]",
         iconColor: "text-[#6d56eb]",
     },
@@ -21,14 +21,14 @@ const benefits = [
     {
         icon: Rocket,
         title: "Weeks, Not Quarters",
-        desc: "Go live in 48–72 hours. We handle integration, KBase ingestion, and testing.",
+        desc: "Go live in 48–72 hours. We handle integration, training, and testing for you.",
         iconBg: "bg-indigo-50 border-indigo-100",
         iconColor: "text-indigo-600",
     },
     {
         icon: BrainCircuit,
         title: "AI Voice Intelligence",
-        desc: "Advanced conversational AI — understands context, objections, and Indian accents.",
+        desc: "Advanced conversational AI that understands context, handles objections, and works naturally with Indian accents.",
         iconBg: "bg-amber-50 border-amber-100",
         iconColor: "text-amber-600",
     },
@@ -51,8 +51,8 @@ export default function Benefits() {
                         <span className="text-[#7c6af5] text-xl font-light">┐</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight">
-                        Beyond features,{" "}
-                        <span className="text-[#71717A]">real results.</span>
+                        Built for{" "}
+                        <span className="text-[#71717A]">Real Business Impact.</span>
                     </h2>
                 </motion.div>
 

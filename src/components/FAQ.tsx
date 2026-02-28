@@ -12,31 +12,31 @@ const faqs: { question: string; answer: string; category: Category; icon: React.
         category: "Setup",
         icon: Zap,
         question: "How long does it take to deploy RapidXAI?",
-        answer: "Most enterprise clients are live within 48–72 hours. We handle technical integration, knowledge base ingestion, and initial testing. You provide your sales objectives and historical call data — we handle everything else.",
+        answer: "Most clients are live within 48–72 hours. We handle integration, AI training, and testing. You provide your sales goals — we take care of the rest.",
     },
     {
         category: "Language",
         icon: Globe,
         question: "What languages and accents do your agents support?",
-        answer: "Our agents natively support 30+ languages. For the Indian market, we have tuned models for Hindi, English (Indian accent), Hinglish, Tamil, Telugu, and more — so your customers always feel they're speaking to a local expert.",
+        answer: "Our agents support Indian English accents and major regional languages. Let us know your priority languages during setup.",
     },
     {
         category: "Integrations",
         icon: Plug,
         question: "Does it integrate with my existing CRM?",
-        answer: "Yes. RapidXAI offers native one-click integrations with Salesforce, HubSpot, Zoho CRM, and Pipedrive. The agent automatically logs calls, updates lead statuses, and drops meeting links directly into your existing pipelines.",
+        answer: "Yes. We integrate with HubSpot, Salesforce, and other major CRMs. Notes and meetings sync automatically.",
     },
     {
         category: "Pricing",
         icon: DollarSign,
         question: "Can I try the AI before committing to an enterprise plan?",
-        answer: "Absolutely. Your first 1,000 conversational minutes are entirely free. Test latency, voice quality, and objection handling on a small batch of leads — then scale confidently when you're ready.",
+        answer: "Yes. Every plan includes your first 1,000 minutes free. No credit card required.",
     },
     {
         category: "Security",
         icon: Shield,
         question: "How secure is my company data?",
-        answer: "We are SOC2 Type II compliant. All audio streams and transcripts are end-to-end encrypted. We never use your proprietary sales data to train our foundational models — your data stays strictly sandboxed.",
+        answer: "Your data is protected with SOC2-ready processes, encryption, and strict data controls. Security is built into every layer of our system.",
     },
 ];
 
@@ -67,11 +67,11 @@ export default function FAQ() {
                         <span className="text-[#7c6af5] text-xl font-light">┐</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight mb-4">
-                        Still on the fence?{" "}
-                        <span className="text-gradient-violet">Let us clear the air.</span>
+                        Frequently Asked{" "}
+                        <span className="text-gradient-violet">Questions</span>
                     </h2>
                     <p className="text-[#71717A] text-lg">
-                        Quick answers to the questions we hear most.
+                        Clear answers to common questions.
                     </p>
                 </div>
 

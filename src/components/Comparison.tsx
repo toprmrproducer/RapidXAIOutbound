@@ -15,7 +15,7 @@ const newItems = [
     "Market-breaking cost-effectiveness",
     "24/7 Always-Available AI Receptionist",
     "Persistent multi-step cadence follow-ups",
-    "Rapid deployment in weeks, not quarters",
+    "Go live in days, not months",
     "CRM-native: automatic notes & tasks",
 ];
 
@@ -32,7 +32,7 @@ export default function Comparison() {
                         <span className="text-4xl md:text-5xl text-gradient-violet">What Actually Works</span>
                     </h2>
                     <p className="text-[#71717A] max-w-xl mx-auto text-lg">
-                        Stop losing revenue to slow follow-ups, missed calls, and expensive traditional teams.
+                        Most companies lose revenue because they respond too late. Here's the difference.
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@ export default function Comparison() {
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wider mb-8 self-start">
                             <XCircle size={14} />
-                            The Old Way
+                            The Traditional Way
                         </div>
 
                         <ul className="space-y-5">
@@ -76,7 +76,7 @@ export default function Comparison() {
                         <div className="relative z-10">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8 self-start" style={{ background: "#ddd6fe", border: "1px solid #c4b5fd", color: "#5b21b6" }}>
                                 <CheckCircle2 size={14} />
-                                The RapidXAI Way
+                                The Smarter Way with RapidXAI
                             </div>
 
                             <ul className="space-y-5">
