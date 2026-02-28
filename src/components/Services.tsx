@@ -169,16 +169,71 @@ export default function Services() {
                         transition={{ delay: 0.2 }}
                         className="card p-8 flex flex-col md:flex-row gap-7 items-start"
                     >
-                        {/* Mini UI viz */}
-                        <div className="w-full md:w-44 shrink-0 bg-[#F9F9FB] border border-[#E4E4E7] rounded-2xl p-4 h-36 flex flex-col gap-2.5 justify-center">
-                            <div className="flex gap-2">
-                                <div className="flex-1 h-12 bg-white rounded-xl border border-[#E4E4E7]" />
-                                <div className="flex-[2] h-12 bg-white rounded-xl border border-[#E4E4E7] flex items-center justify-center">
-                                    <div className="w-6 h-6 rounded-full bg-[#ede9fe]" />
-                                </div>
-                            </div>
-                            <div className="h-2 bg-[#E4E4E7] rounded-full" />
-                            <div className="w-3/4 h-2 bg-[#E4E4E7] rounded-full" />
+                        {/* Animated security viz */}
+                        <div className="w-full md:w-44 shrink-0 bg-[#F9F9FB] border border-[#E4E4E7] rounded-2xl overflow-hidden h-36 flex items-center justify-center relative">
+                            <svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+
+                                {/* Outer pulse ring 1 */}
+                                <motion.circle cx="70" cy="52" r="34"
+                                    stroke="#7c6af5" strokeWidth="1"
+                                    animate={{ scale: [1, 1.45, 1], opacity: [0.35, 0, 0.35] }}
+                                    transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut" }}
+                                    style={{ transformOrigin: "70px 52px", transformBox: "fill-box" }}
+                                />
+                                {/* Outer pulse ring 2 — offset */}
+                                <motion.circle cx="70" cy="52" r="34"
+                                    stroke="#7c6af5" strokeWidth="0.7"
+                                    animate={{ scale: [1, 1.65, 1], opacity: [0.2, 0, 0.2] }}
+                                    transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut", delay: 1.0 }}
+                                    style={{ transformOrigin: "70px 52px", transformBox: "fill-box" }}
+                                />
+
+                                {/* Shield body */}
+                                <motion.path
+                                    d="M70 22 L90 32 L90 54 Q90 68 70 76 Q50 68 50 54 L50 32 Z"
+                                    fill="#ede9fe" stroke="#7c6af5" strokeWidth="1.5" strokeLinejoin="round"
+                                    initial={{ scale: 0.75, opacity: 0 }}
+                                    whileInView={{ scale: 1, opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
+                                    style={{ transformOrigin: "70px 49px", transformBox: "fill-box" }}
+                                />
+
+                                {/* Animated checkmark */}
+                                <motion.path
+                                    d="M61 49 L67.5 56 L81 42"
+                                    stroke="#6d56eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                                    initial={{ pathLength: 0, opacity: 0 }}
+                                    whileInView={{ pathLength: 1, opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.55, delay: 0.6, ease: "easeOut" }}
+                                />
+
+                                {/* SOC2 badge — top-left */}
+                                <motion.g initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 1.0, duration: 0.35 }}>
+                                    <rect x="3" y="7" width="36" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
+                                    <text x="21" y="18" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">SOC2</text>
+                                    {/* connector */}
+                                    <line x1="39" y1="14" x2="52" y2="36" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
+                                </motion.g>
+
+                                {/* GDPR badge — top-right */}
+                                <motion.g initial={{ opacity: 0, x: 6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 1.18, duration: 0.35 }}>
+                                    <rect x="101" y="7" width="36" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
+                                    <text x="119" y="18" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">GDPR</text>
+                                    {/* connector */}
+                                    <line x1="101" y1="14" x2="88" y2="36" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
+                                </motion.g>
+
+                                {/* E2E badge — bottom-center */}
+                                <motion.g initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.35, duration: 0.35 }}>
+                                    <rect x="50" y="88" width="40" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
+                                    <text x="70" y="99" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">E2E ENC</text>
+                                    {/* connector */}
+                                    <line x1="70" y1="76" x2="70" y2="88" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
+                                </motion.g>
+
+                            </svg>
                         </div>
                         <div className="flex-1">
                             <div className="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-5">
