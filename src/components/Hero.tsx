@@ -174,10 +174,10 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="relative z-10 font-display text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight text-[#18181B] leading-[0.95] mb-8 mx-auto max-w-4xl"
+                        className="relative z-10 font-display text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight text-[#18181B] leading-tight md:leading-[0.95] mb-8 mx-auto max-w-4xl"
                     >
                         AI Receptionists
-                        <br className="hidden md:block" />
+                        <br />
                         That Book{" "}
                         <span className="text-gradient-violet">Appointments.</span>
                     </motion.h1>
@@ -217,6 +217,49 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.5 }}
                 >
                     <VoiceWaveform />
+                </motion.div>
+
+                {/* Mobile float cards — hidden on lg+ (desktop uses absolute positioned versions) */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.6 }}
+                    className="lg:hidden flex flex-row gap-3 mt-8 w-full max-w-xs mx-auto"
+                >
+                    {/* Sales metric card */}
+                    <div className="flex-1 rounded-[1.25rem] p-4 text-left" style={{ background: "linear-gradient(180deg,#fff,#f9f9f9)", boxShadow: "0 6px 18px rgba(0,0,0,0.08)", border: "1px solid #E4E4E7" }}>
+                        <div className="flex items-center gap-1.5 mb-2">
+                            <span className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg,#34d399,#10b981)" }}>
+                                <svg width={9} fill="#fff" height={9} viewBox="0 0 1792 1792"><path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z" /></svg>
+                            </span>
+                            <p className="text-[11px] font-semibold text-[#1c1c1e]">Sales</p>
+                            <span className="ml-auto text-emerald-700 text-[10px] font-semibold">↑20%</span>
+                        </div>
+                        <p className="font-display text-xl font-bold text-[#111827] leading-none mb-2" style={{ letterSpacing: "-0.03em" }}>39,500</p>
+                        <div className="w-full h-1.5 rounded-full bg-[#e5e5ea] overflow-hidden">
+                            <div className="h-full rounded-full" style={{ width: "76%", background: "linear-gradient(90deg,#34d399,#10b981)" }} />
+                        </div>
+                        <p className="text-[9px] text-[#A1A1AA] mt-1.5">Revenue this month</p>
+                    </div>
+
+                    {/* Outbound Swarm card */}
+                    <div className="flex-1 rounded-[1.25rem] p-4 text-left" style={{ background: "linear-gradient(180deg,#fff,#f9f9f9)", boxShadow: "0 6px 18px rgba(0,0,0,0.08)", border: "1px solid #E4E4E7" }}>
+                        <div className="flex items-center gap-1.5 mb-2">
+                            <div className="w-6 h-6 rounded-full bg-[#dcfce7] flex items-center justify-center flex-shrink-0">
+                                <Zap size={10} className="text-emerald-600" />
+                            </div>
+                            <div>
+                                <p className="text-[11px] font-semibold text-[#18181B] leading-none">Outbound</p>
+                                <p className="text-[9px] text-[#A1A1AA]">Running now</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-0.5 items-end h-8 mb-1.5">
+                            {[40, 65, 50, 80, 55, 90, 70].map((h, i) => (
+                                <div key={i} className="flex-1 rounded-sm" style={{ height: `${h}%`, background: "linear-gradient(180deg,#34d399,#10b981)" }} />
+                            ))}
+                        </div>
+                        <p className="text-[9px] text-[#A1A1AA]">14,293 contacts today</p>
+                    </div>
                 </motion.div>
 
                 <motion.p
