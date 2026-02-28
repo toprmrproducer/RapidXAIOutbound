@@ -1,94 +1,148 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
+
+const plans = [
+    {
+        name: "Inbound Only",
+        price: "₹7,000",
+        per: "/mo",
+        description: "Perfect for businesses needing a 24/7 AI receptionist.",
+        features: ["Always-on reception", "Lead Qualification", "Meeting Routing", "Email Notifications"],
+        cta: "Start Inbound",
+        accent: "indigo",
+        popular: false,
+    },
+    {
+        name: "Omnichannel",
+        price: "₹25,000",
+        per: "/mo",
+        description: "Unstoppable growth with inbound reception and outbound outreach working together.",
+        features: ["Everything in Inbound & Outbound", "Shared Context Memory", "Advanced CRM Sync", "Dedicated Support Manager"],
+        cta: "Claim 1000 Free Mins",
+        accent: "violet",
+        popular: true,
+    },
+    {
+        name: "Outbound Only",
+        price: "₹20,000",
+        per: "/mo",
+        description: "Targeted outreach driven by human-grade AI SDRs.",
+        features: ["Targeted Campaigns", "Automated Callbacks", "Re-engagement cadences", "SMS/WhatsApp follow-ups"],
+        cta: "Start Outbound",
+        accent: "indigo",
+        popular: false,
+    },
+];
 
 export default function Pricing() {
     return (
-        <section id="pricing" className="py-24 relative px-6">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
+        <section id="pricing" className="py-28 relative px-6 overflow-hidden">
 
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-bold mb-6 animate-pulse">
+            {/* Background glow */}
+            <div className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-violet-600/8 blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="max-w-6xl mx-auto relative">
+
+                {/* ── Header ─────────────────────────────────────── */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-6">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                        </span>
                         First 1000 minutes FREE
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Market Breaking Setup</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg">The most cost-effective enterprise AI voice agents available in the Indian market.</p>
-                </div>
+                    <h2 className="font-display text-5xl md:text-6xl font-bold text-white leading-tight mb-5">
+                        Market-Breaking{" "}
+                        <span className="text-gradient-primary">Pricing.</span>
+                    </h2>
+                    <p className="text-slate-400 max-w-xl mx-auto text-lg font-light leading-relaxed">
+                        The most cost-effective enterprise AI voice agents in the Indian market.
+                    </p>
+                </motion.div>
 
-                <div className="grid lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+                {/* ── Cards ───────────────────────────────────────── */}
+                <div className="grid lg:grid-cols-3 gap-6 items-center">
+                    {plans.map((plan, i) => (
+                        <motion.div
+                            key={plan.name}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className={plan.popular ? "lg:-translate-y-5" : ""}
+                        >
+                            <div
+                                className={`relative rounded-3xl p-8 flex flex-col h-full transition-all duration-500 ${plan.popular
+                                        ? "bg-[#0e0e1e] shadow-[0_0_80px_rgba(124,106,245,0.25)] hover:shadow-[0_0_100px_rgba(124,106,245,0.4)]"
+                                        : "glass-card hover:shadow-[0_24px_60px_rgba(99,102,241,0.12)] hover:-translate-y-1"
+                                    }`}
+                            >
+                                {/* Gradient border for popular card */}
+                                {plan.popular && (
+                                    <div className="absolute inset-0 rounded-3xl p-px bg-gradient-to-b from-violet-500/60 via-indigo-500/30 to-transparent pointer-events-none">
+                                        <div className="rounded-3xl bg-[#0e0e1e] w-full h-full" />
+                                    </div>
+                                )}
 
-                    {/* Inbound Tier */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="p-8 rounded-3xl glass-card border-white/5 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-300 relative group"
-                    >
-                        <h3 className="text-xl font-semibold text-slate-300 mb-2">Inbound Only</h3>
-                        <div className="mb-6">
-                            <span className="text-5xl font-extrabold text-white">₹7,000</span>
-                            <span className="text-slate-400">/mo</span>
-                        </div>
-                        <p className="text-sm text-slate-400 mb-8 border-b border-white/10 pb-6">Perfect for businesses needing a 24/7 receptionist.</p>
+                                {/* Popular badge */}
+                                {plan.popular && (
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-gradient-to-r from-violet-500 to-indigo-500 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(124,106,245,0.5)]">
+                                        <Sparkles size={11} />
+                                        Most Popular
+                                    </div>
+                                )}
 
-                        <ul className="space-y-4 mb-8">
-                            {["Always-on reception", "Lead Qualification", "Meeting Routing", "Email Notifications"].map((f, i) => (
-                                <li key={i} className="flex gap-3 text-slate-300 text-sm"><Check size={18} className="text-indigo-400" /> {f}</li>
-                            ))}
-                        </ul>
-                        <button className="w-full py-3 rounded-xl border border-indigo-500 text-indigo-400 font-semibold hover:bg-indigo-500 hover:text-white transition-colors">Start Inbound</button>
-                    </motion.div>
+                                <div className="relative z-10 flex flex-col h-full">
+                                    {/* Plan name */}
+                                    <h3 className={`font-display text-lg font-semibold mb-2 ${plan.popular ? "text-violet-300" : "text-slate-300"}`}>
+                                        {plan.name}
+                                    </h3>
 
-                    {/* Combined Tier (Highlighted) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="p-8 rounded-3xl backdrop-blur-3xl bg-gradient-to-b from-indigo-900/50 to-indigo-950/80 border border-indigo-500/30 relative transform lg:-translate-y-4 shadow-[0_0_40px_rgba(99,102,241,0.25)] hover:shadow-[0_0_60px_rgba(99,102,241,0.4)] transition-all duration-300 ring-1 ring-white/10 group"
-                    >
-                        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
+                                    {/* Price */}
+                                    <div className="mb-5">
+                                        <span className={`font-display text-5xl font-bold ${plan.popular ? "text-white" : "text-white"}`}>
+                                            {plan.price}
+                                        </span>
+                                        <span className="text-slate-400 ml-1 text-sm">{plan.per}</span>
+                                    </div>
 
-                        <h3 className="text-xl font-semibold text-indigo-300 mb-2">Omnichannel Combined</h3>
-                        <div className="mb-6">
-                            <span className="text-5xl font-extrabold text-white">₹25,000</span>
-                            <span className="text-indigo-200">/mo</span>
-                        </div>
-                        <p className="text-sm text-indigo-200/70 mb-8 border-b border-indigo-500/20 pb-6">Unstoppable growth with both inbound reception and outbound outreach.</p>
+                                    <p className={`text-sm mb-8 pb-6 border-b ${plan.popular ? "text-violet-200/60 border-violet-500/20" : "text-slate-400 border-white/8"} leading-relaxed font-light`}>
+                                        {plan.description}
+                                    </p>
 
-                        <ul className="space-y-4 mb-8">
-                            {["Everything in Inbound & Outbound", "Shared Context Memory", "Advanced CRM Sync", "Dedicated Support Manager"].map((f, i) => (
-                                <li key={i} className="flex gap-3 text-white font-medium text-sm"><Check size={18} className="text-purple-400" /> {f}</li>
-                            ))}
-                        </ul>
-                        <button className="w-full py-3 rounded-xl bg-white text-indigo-950 font-bold shadow-lg hover:bg-slate-200 transition-colors">Claim 1000 Free Mins</button>
-                    </motion.div>
+                                    {/* Features */}
+                                    <ul className="space-y-3 mb-8 flex-1">
+                                        {plan.features.map((f) => (
+                                            <li key={f} className={`flex items-center gap-3 text-sm ${plan.popular ? "text-white/90" : "text-slate-300"}`}>
+                                                <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.popular ? "bg-violet-500/20 border border-violet-500/30" : "bg-indigo-500/10 border border-indigo-500/20"}`}>
+                                                    <Check size={11} className={plan.popular ? "text-violet-400" : "text-indigo-400"} />
+                                                </div>
+                                                {f}
+                                            </li>
+                                        ))}
+                                    </ul>
 
-                    {/* Outbound Tier */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="p-8 rounded-3xl glass-card border-white/5 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-300 relative group"
-                    >
-                        <h3 className="text-xl font-semibold text-slate-300 mb-2">Outbound Only</h3>
-                        <div className="mb-6">
-                            <span className="text-5xl font-extrabold text-white">₹20,000</span>
-                            <span className="text-slate-400">/mo</span>
-                        </div>
-                        <p className="text-sm text-slate-400 mb-8 border-b border-white/10 pb-6">Targeted outreach driven by human-grade AI SDRs.</p>
-
-                        <ul className="space-y-4 mb-8">
-                            {["Targeted Campaigns", "Automated Callbacks", "Re-engagement cadences", "SMS/WhatsApp follow-ups"].map((f, i) => (
-                                <li key={i} className="flex gap-3 text-slate-300 text-sm"><Check size={18} className="text-indigo-400" /> {f}</li>
-                            ))}
-                        </ul>
-                        <button className="w-full py-3 rounded-xl border border-indigo-500 text-indigo-400 font-semibold hover:bg-indigo-500 hover:text-white transition-colors">Start Outbound</button>
-                    </motion.div>
-
+                                    {/* CTA */}
+                                    <button
+                                        className={`w-full py-3.5 rounded-2xl font-semibold text-sm transition-all duration-300 btn-shimmer ${plan.popular
+                                                ? "bg-white text-slate-900 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] hover:scale-[1.02]"
+                                                : "border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500/10 hover:border-indigo-500/60"
+                                            }`}
+                                    >
+                                        {plan.cta}
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

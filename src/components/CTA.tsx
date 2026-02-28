@@ -1,36 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function CTA() {
     return (
-        <section className="py-24 px-6 relative z-10">
+        <section className="py-28 px-6 relative z-10 overflow-hidden">
             <div className="max-w-5xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="glass-card rounded-3xl p-12 md:p-20 text-center relative overflow-hidden border border-indigo-500/20"
+                    className="relative rounded-[2.5rem] p-14 md:p-24 text-center overflow-hidden"
                 >
-                    {/* Background Glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-500/10 blur-[100px] pointer-events-none" />
+                    {/* Gradient border */}
+                    <div className="absolute inset-0 rounded-[2.5rem] p-px bg-gradient-to-br from-violet-500/50 via-indigo-500/25 to-transparent pointer-events-none">
+                        <div className="rounded-[2.5rem] w-full h-full bg-[#0a0a18]" />
+                    </div>
+
+                    {/* Inner aurora glow */}
+                    <div className="absolute inset-0 rounded-[2.5rem] pointer-events-none overflow-hidden">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-violet-600/8 blur-[80px]" />
+                    </div>
+
+                    {/* Dot grid inside the card */}
+                    <div className="absolute inset-0 rounded-[2.5rem] bg-dot-grid opacity-100 pointer-events-none" />
 
                     <div className="relative z-10">
-                        <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
-                            Ready to Break Your <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Revenue Ceiling?</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-semibold tracking-widest uppercase mb-8">
+                            <Sparkles size={12} />
+                            Limited Early Access
+                        </div>
+
+                        <h2 className="font-display text-5xl md:text-7xl font-bold text-white leading-[0.95] mb-6">
+                            Ready to Break Your
+                            <br />
+                            <span className="text-gradient-primary">Revenue Ceiling?</span>
                         </h2>
 
-                        <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                            Stop losing leads to high response times. Deploy your AI workforce today and watch your meeting booked rate double this quarter.
+                        <p className="text-slate-400 max-w-2xl mx-auto mb-12 text-lg leading-relaxed font-light">
+                            Stop losing leads to slow response times. Deploy your AI workforce today — watch your meeting booked rate double this quarter.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-indigo-950 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-                                Claim 1000 Free Mins <ArrowRight size={20} />
+                            <button className="btn-shimmer group flex items-center gap-2 bg-white text-slate-900 px-10 py-4 rounded-full font-semibold text-base hover:scale-[1.03] transition-all hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95">
+                                Claim 1000 Free Mins
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <span className="text-sm font-medium text-slate-400 uppercase tracking-wider">No credit card required</span>
+                            <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">No credit card required</p>
                         </div>
                     </div>
                 </motion.div>
