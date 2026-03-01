@@ -6,7 +6,6 @@ import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import DemoChat from "@/components/DemoChat";
 import Benefits from "@/components/Benefits";
-import TestimonialsSection from "@/components/ui/testimonial-v2";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -30,8 +29,6 @@ export default function Home() {
       <Pricing />
 
       <Benefits />
-
-      <TestimonialsSection />
 
       <FAQ />
       <CTA />

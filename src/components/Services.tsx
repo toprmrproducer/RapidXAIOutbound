@@ -1,10 +1,48 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { Check, ArrowRight, Headphones, Target, Database, Users, Phone, Brain, Calendar, MessageSquare } from "lucide-react";
+import SecurityOrbit from "./SecurityOrbit";
+import MarqueeTagStrip, { RAPIDX_CAPABILITIES } from "./MarqueeTagStrip";
 
 const inboundFlow = ["Greet", "Qualify", "Route", "Schedule"];
 const outboundFlow = ["Target", "Connect", "Pitch", "Book"];
+
+interface BentoCardProps extends HTMLMotionProps<"div"> {
+    children?: React.ReactNode;
+}
+
+const BentoCard = ({ children, className = "", ...props }: BentoCardProps) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
+
+    return (
+        <motion.div
+            {...props}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            className={`relative overflow-hidden card ${className}`}
+        >
+            <div
+                className="pointer-events-none absolute -inset-px rounded-[1.75rem] opacity-0 transition duration-300 z-0"
+                style={{
+                    opacity: isHovering ? 1 : 0,
+                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(124,106,245,0.06), transparent 40%)`,
+                }}
+            />
+            <div className="relative z-10 h-full w-full">
+                {children}
+            </div>
+        </motion.div>
+    );
+};
 
 function SectionLabel({ text }: { text: string }) {
     return (
@@ -39,11 +77,11 @@ export default function Services() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
                     {/* Inbound — 1 col */}
-                    <motion.div
+                    <BentoCard
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="card p-8 flex flex-col"
+                        className="p-8 flex flex-col"
                     >
                         <div className="w-11 h-11 rounded-xl bg-[#ede9fe] border border-[#ddd6fe] flex items-center justify-center mb-5">
                             <Headphones size={20} className="text-[#6d56eb]" />
@@ -74,24 +112,24 @@ export default function Services() {
                                 Smart CRM-based routing
                             </li>
                         </ul>
-                    </motion.div>
+                    </BentoCard>
 
                     {/* Outbound — 2 col */}
-                    <motion.div
+                    <BentoCard
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="card p-8 lg:col-span-2 relative overflow-hidden"
+                        className="p-8 lg:col-span-2 relative overflow-hidden flex flex-col justify-center"
                     >
                         {/* Background watermark */}
-                        <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none select-none pr-6">
+                        <div className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none select-none pr-6 z-0">
                             <span className="font-display font-extrabold text-[9rem] leading-none text-[#F4F4F5] tracking-widest">
                                 SDR
                             </span>
                         </div>
 
-                        <div className="relative z-10">
+                        <div className="relative z-10 w-full max-w-xl">
                             <div className="w-11 h-11 rounded-xl bg-[#dcfce7] border border-[#bbf7d0] flex items-center justify-center mb-5">
                                 <Target size={20} className="text-emerald-600" />
                             </div>
@@ -111,149 +149,94 @@ export default function Services() {
                                 ))}
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3">
-                                <div className="bg-[#F9F9FB] border border-[#E4E4E7] rounded-xl p-4">
+                            <div className="grid grid-cols-2 gap-3 max-w-sm">
+                                <div className="bg-white/80 backdrop-blur-sm border border-[#E4E4E7] rounded-xl p-4 shadow-sm">
                                     <p className="font-display text-2xl font-bold text-[#18181B] mb-0.5">3×</p>
                                     <p className="text-xs text-[#71717A]">More connects vs human SDR</p>
                                 </div>
-                                <div className="bg-[#F9F9FB] border border-[#E4E4E7] rounded-xl p-4">
+                                <div className="bg-white/80 backdrop-blur-sm border border-[#E4E4E7] rounded-xl p-4 shadow-sm">
                                     <p className="font-display text-2xl font-bold text-[#18181B] mb-0.5">14,293</p>
                                     <p className="text-xs text-[#71717A]">Contacts reached today</p>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </BentoCard>
                 </div>
 
                 {/* Bottom row — 2 × 1 col */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
 
                     {/* CRM Integration */}
-                    <motion.div
+                    <BentoCard
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.15 }}
-                        className="card p-8 flex flex-col md:flex-row gap-7 items-start"
+                        className="lg:col-span-2"
                     >
-                        <div className="flex-1">
-                            <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-5">
-                                <Database size={20} className="text-indigo-600" />
-                            </div>
-                            <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">CRM &amp; Calendar Sync</h3>
-                            <p className="text-[#71717A] text-sm leading-relaxed">
-                                Connects directly with HubSpot, Salesforce, and Google Calendar. Every note, status update, and meeting is synced automatically.
-                            </p>
-                        </div>
-                        {/* Mini checklist */}
-                        <div className="w-full md:w-52 shrink-0 bg-[#F9F9FB] border border-[#E4E4E7] rounded-2xl p-4">
-                            <div className="bg-[#ede9fe] border border-[#ddd6fe] p-3 rounded-xl mb-3 flex items-center justify-between">
-                                <span className="text-xs font-semibold text-[#18181B]">Integration Setup</span>
-                                <Check size={14} className="text-[#7c6af5]" />
-                            </div>
-                            {["HubSpot CRM", "Google Calendar", "SMS Follow-ups", "Slack Alerts"].map((item, i) => (
-                                <div key={item} className="flex items-center gap-2 py-1.5 text-xs text-[#71717A]">
-                                    <Check size={11} className={i < 2 ? "text-[#7c6af5]" : "text-[#D4D4D8]"} />
-                                    {item}
-                                    <div className={`ml-auto w-3 h-3 rounded-full border ${i < 2 ? "bg-[#7c6af5] border-[#7c6af5]" : "border-[#D4D4D8]"}`} />
+                        <div className="p-6 lg:p-8 flex flex-col md:flex-row gap-7 items-start lg:items-center w-full h-full">
+                            <div className="flex-1">
+                                <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-5">
+                                    <Database size={20} className="text-indigo-600" />
                                 </div>
-                            ))}
+                                <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">CRM & Calendar Sync</h3>
+                                <p className="text-[#71717A] text-sm leading-relaxed">
+                                    Connects directly with HubSpot, Salesforce, and Google Calendar. Every note, status update, and meeting is synced automatically.
+                                </p>
+                            </div>
+                            {/* Mini checklist */}
+                            <div className="w-full md:w-56 shrink-0 bg-white shadow-sm border border-[#E4E4E7] rounded-2xl p-4 relative z-10 transition-transform hover:-translate-y-1">
+                                <div className="bg-[#ede9fe] border border-[#ddd6fe] p-3 rounded-xl mb-3 flex items-center justify-between">
+                                    <span className="text-xs font-semibold text-[#18181B]">Integration Setup</span>
+                                    <Check size={14} className="text-[#7c6af5]" />
+                                </div>
+                                {["HubSpot CRM", "Google Calendar", "SMS Follow-ups", "Slack Alerts"].map((item, i) => (
+                                    <div key={item} className="flex items-center gap-2 py-1.5 text-xs text-[#71717A]">
+                                        <Check size={11} className={i < 2 ? "text-[#7c6af5]" : "text-[#D4D4D8]"} />
+                                        {item}
+                                        <div className={`ml-auto w-3 h-3 rounded-full border ${i < 2 ? "bg-[#7c6af5] border-[#7c6af5]" : "border-[#D4D4D8]"}`} />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </motion.div>
+                    </BentoCard>
 
                     {/* Enterprise Security */}
-                    <motion.div
+                    <BentoCard
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="card p-8 flex flex-col md:flex-row gap-7 items-start"
+                        className="overflow-hidden min-h-[400px] lg:col-span-2"
                     >
-                        {/* Animated security viz */}
-                        <div className="w-full md:w-44 shrink-0 bg-[#F9F9FB] border border-[#E4E4E7] rounded-2xl overflow-hidden h-36 flex items-center justify-center relative">
-                            <svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-
-                                {/* Outer pulse ring 1 */}
-                                <motion.circle cx="70" cy="52" r="34"
-                                    stroke="#7c6af5" strokeWidth="1"
-                                    animate={{ scale: [1, 1.45, 1], opacity: [0.35, 0, 0.35] }}
-                                    transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut" }}
-                                    style={{ transformOrigin: "70px 52px", transformBox: "fill-box" }}
-                                />
-                                {/* Outer pulse ring 2 — offset */}
-                                <motion.circle cx="70" cy="52" r="34"
-                                    stroke="#7c6af5" strokeWidth="0.7"
-                                    animate={{ scale: [1, 1.65, 1], opacity: [0.2, 0, 0.2] }}
-                                    transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut", delay: 1.0 }}
-                                    style={{ transformOrigin: "70px 52px", transformBox: "fill-box" }}
-                                />
-
-                                {/* Shield body */}
-                                <motion.path
-                                    d="M70 22 L90 32 L90 54 Q90 68 70 76 Q50 68 50 54 L50 32 Z"
-                                    fill="#ede9fe" stroke="#7c6af5" strokeWidth="1.5" strokeLinejoin="round"
-                                    initial={{ scale: 0.75, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
-                                    style={{ transformOrigin: "70px 49px", transformBox: "fill-box" }}
-                                />
-
-                                {/* Animated checkmark */}
-                                <motion.path
-                                    d="M61 49 L67.5 56 L81 42"
-                                    stroke="#6d56eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                                    initial={{ pathLength: 0, opacity: 0 }}
-                                    whileInView={{ pathLength: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.55, delay: 0.6, ease: "easeOut" }}
-                                />
-
-                                {/* SOC2 badge — top-left */}
-                                <motion.g initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 1.0, duration: 0.35 }}>
-                                    <rect x="3" y="7" width="36" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
-                                    <text x="21" y="18" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">SOC2</text>
-                                    {/* connector */}
-                                    <line x1="39" y1="14" x2="52" y2="36" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
-                                </motion.g>
-
-                                {/* GDPR badge — top-right */}
-                                <motion.g initial={{ opacity: 0, x: 6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 1.18, duration: 0.35 }}>
-                                    <rect x="101" y="7" width="36" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
-                                    <text x="119" y="18" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">GDPR</text>
-                                    {/* connector */}
-                                    <line x1="101" y1="14" x2="88" y2="36" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
-                                </motion.g>
-
-                                {/* E2E badge — bottom-center */}
-                                <motion.g initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.35, duration: 0.35 }}>
-                                    <rect x="50" y="88" width="40" height="15" rx="7.5" fill="white" stroke="#E4E4E7" strokeWidth="1" />
-                                    <text x="70" y="99" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#6d56eb" fontFamily="system-ui,sans-serif">E2E ENC</text>
-                                    {/* connector */}
-                                    <line x1="70" y1="76" x2="70" y2="88" stroke="#ddd6fe" strokeWidth="1" strokeDasharray="3 2.5" />
-                                </motion.g>
-
-                            </svg>
-                        </div>
-                        <div className="flex-1">
-                            <div className="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-5">
-                                <Users size={20} className="text-slate-600" />
+                        <div className="flex flex-col lg:flex-row w-full h-full">
+                            <div className="p-6 pb-0 lg:p-8 lg:pb-8 flex-1 relative z-10 max-w-md lg:shrink-0 flex items-center">
+                                <div>
+                                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center mb-5 shadow-sm">
+                                        <Users size={20} className="text-slate-600" />
+                                    </div>
+                                    <h3 className="font-display text-2xl font-bold text-[#18181B] mb-3">Enterprise Security</h3>
+                                    <p className="text-[#52525B] text-base leading-relaxed">
+                                        Built with SOC2-ready processes, end-to-end encryption, GDPR compliance, and priority support for enterprise clients.
+                                    </p>
+                                </div>
                             </div>
-                            <h3 className="font-display text-xl font-bold text-[#18181B] mb-2">Enterprise Security</h3>
-                            <p className="text-[#71717A] text-sm leading-relaxed">
-                                Built with SOC2-ready processes, end-to-end encryption, GDPR compliance, and priority support for enterprise clients.
-                            </p>
+                            <div className="relative flex-1 min-h-[340px] lg:min-h-full flex items-center justify-center mt-[-2rem] lg:mt-0">
+                                <div className="absolute inset-x-0 inset-y-8 md:inset-0 w-full h-full flex items-center justify-center scale-90 lg:scale-[0.85] xl:scale-100">
+                                    <SecurityOrbit />
+                                </div>
+                            </div>
                         </div>
-                    </motion.div>
+                    </BentoCard>
                 </div>
 
                 {/* ── Routing Flow — full-width card ── */}
-                <motion.div
+                <BentoCard
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="card mt-5 px-8 pt-8 pb-4"
+                    className="mt-5 px-8 pt-8 pb-4"
                 >
                     <p className="text-[10px] font-bold tracking-[0.22em] uppercase text-[#A1A1AA] mb-1">Under the Hood</p>
                     <h3 className="font-display text-lg font-bold text-[#18181B] mb-2">How Every Call Gets Handled</h3>
@@ -372,7 +355,7 @@ export default function Services() {
                             </foreignObject>
                         </svg>
                     </div>
-                </motion.div>
+                </BentoCard>
 
             </div>
         </section>

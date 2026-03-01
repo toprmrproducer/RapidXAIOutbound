@@ -20,7 +20,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         {/* Geist — display / headline font from Vercel */}
         <link
@@ -28,7 +28,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/style.css"
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased overflow-x-hidden`}>
         {children}
       </body>
     </html>

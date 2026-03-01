@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Mic, MicOff, Settings, MessageSquare, Volume2,
-    Sparkles, Activity, User, Check
+    Sparkles, Activity, User, Check, Zap, Database, Repeat
 } from "lucide-react";
+import WaveformCard from "./WaveformCard";
 
 /* ── Deterministic waveform bars (SSR-safe, no Math.random on render) ── */
 const WAVE_BARS = Array.from({ length: 14 }, (_, i) => {
@@ -143,14 +144,14 @@ function VoiceAgentCard() {
     };
 
     return (
-        <>
+        <div className="flex flex-col items-center justify-center w-full h-full">
             <style>{`
                 .dc-no-scrollbar::-webkit-scrollbar { display: none; }
                 .dc-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
                 .dc-mask { mask-image: linear-gradient(to bottom, transparent, black 18%, black 88%); }
             `}</style>
 
-            <div className="flex flex-col h-[580px] rounded-[2.5rem] bg-white border border-[#E4E4E7] shadow-[0_24px_80px_-12px_rgba(0,0,0,0.10)] overflow-hidden">
+            <div className="flex flex-col w-full h-full max-h-[580px] rounded-[2.5rem] bg-white border border-[#E4E4E7] shadow-[0_24px_80px_-12px_rgba(0,0,0,0.10)] overflow-hidden">
 
                 {/* Header */}
                 <div className="px-6 pt-6 pb-3 flex justify-between items-center bg-white shrink-0">
@@ -230,7 +231,7 @@ function VoiceAgentCard() {
             </div>
 
             {/* Peripheral stats */}
-            <div className="mt-5 flex justify-center gap-8 opacity-50">
+            <div className="mt-5 flex justify-center gap-8 opacity-50 shrink-0">
                 {["Latency: 12ms", "Precision: 99.9%", "Model: RapidXAI Agent"].map((tag, i) => {
                     const [label, val] = tag.split(": ");
                     return (
@@ -241,50 +242,49 @@ function VoiceAgentCard() {
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 }
-
-/* ── Section ──────────────────────────────────────────────────────── */
-const features = [
-    "Sub-second response latency",
-    "Custom knowledge base integration",
-    "Real-time CRM note syncing",
-];
 
 export default function DemoChat() {
     return (
         <section id="demo" className="py-24 px-6 bg-[#F5F6F7]">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
 
-                {/* Left: Text content */}
-                <div className="flex-1 text-center md:text-left">
-                    <div className="flex items-center gap-2 mb-5 justify-center md:justify-start">
-                        <span className="text-[#7c6af5] text-xl font-light">└</span>
-                        <span className="section-label">Hear It for Yourself</span>
-                        <span className="text-[#7c6af5] text-xl font-light">┐</span>
+                {/* Left side text */}
+                <div className="flex-1 text-center lg:text-left">
+                    <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                        <span className="text-[#a196f3] text-lg font-light">└</span>
+                        <span className="text-[10px] font-bold text-[#a196f3] uppercase tracking-[0.2em] mt-0.5">Hear It for Yourself</span>
+                        <span className="text-[#a196f3] text-lg font-light">┐</span>
                     </div>
-                    <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight mb-5">
-                        Human-Grade{" "}
+                    <h2 className="font-display text-4xl md:text-[3.2rem] leading-tight font-bold tracking-tight mb-6">
+                        <span className="text-[#18181B]">Human-Grade</span>{" "}
                         <span className="text-[#71717A]">Dialogue.</span>
                     </h2>
-                    <p className="text-[#71717A] text-lg mb-8 leading-relaxed">
-                        Our AI sounds natural and confident. It understands context, handles interruptions smoothly, and guides prospects toward booking a meeting.
+                    <p className="text-[17px] text-[#52525B] leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+                        Our AI sounds natural and confident. It understands context, handles
+                        interruptions smoothly, and guides prospects toward booking a meeting.
                     </p>
-                    <ul className="space-y-3">
-                        {features.map((f) => (
-                            <li key={f} className="flex items-center gap-2.5 text-[#52525B] text-sm">
-                                <div className="w-5 h-5 rounded-full bg-[#ede9fe] flex items-center justify-center shrink-0">
-                                    <Check size={11} className="text-[#6d56eb]" />
+
+                    <div className="flex flex-col gap-4 max-w-xl mx-auto lg:mx-0 text-left">
+                        {[
+                            "Sub-second response latency",
+                            "Custom knowledge base integration",
+                            "Real-time CRM note syncing"
+                        ].map((feature, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-full bg-[#f0ecff] flex items-center justify-center shrink-0">
+                                    <Check size={12} className="text-[#7c6af5]" strokeWidth={3} />
                                 </div>
-                                {f}
-                            </li>
+                                <span className="text-[15px] text-[#52525B]">{feature}</span>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
 
-                {/* Right: Voice Agent card */}
-                <div className="flex-1 w-full max-w-sm">
+                {/* Right side interactive card */}
+                <div className="flex-1 w-full max-w-[480px]">
                     <VoiceAgentCard />
                 </div>
 

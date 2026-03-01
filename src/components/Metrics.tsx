@@ -2,6 +2,8 @@
 
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useRef, useEffect } from "react";
+import LiveCallTicker from "./LiveCallTicker";
+import MarqueeTagStrip, { RAPIDX_BRANDS } from "./MarqueeTagStrip";
 
 /* ── Data ── */
 const stats = [
@@ -167,6 +169,16 @@ export default function Metrics() {
                     ))}
                 </div>
             </div>
+
+            {/* ── Live Call Ticker ── */}
+            <div className="max-w-6xl mx-auto px-6 mt-6 mb-2">
+                <p className="text-center text-[#A1A1AA] text-[10px] font-bold tracking-[0.22em] uppercase mb-3">
+                    Live Agent Activity · Right Now
+                </p>
+                <LiveCallTicker />
+            </div>
+
+
 
             {/* Self-drawing growth chart */}
             <div className="max-w-6xl mx-auto">
