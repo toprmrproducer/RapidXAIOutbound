@@ -1,134 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Sparkles, ArrowUpRight } from "lucide-react";
 
 const plans = [
     {
-        name: "Inbound Only",
-        price: "₹7,000",
-        per: "/mo",
-        description: "Ideal for businesses that want every inbound call answered and converted.",
-        features: ["Always-on reception", "Lead Qualification", "Meeting Routing", "Email Notifications"],
-        cta: "Start Inbound",
-        popular: false,
+        name: "Starter",
+        price: "$49",
+        period: "/mo",
+        desc: "Perfect for solo founders and small teams testing AI voice.",
+        features: ["1,000 minutes/month", "1 AI agent", "Inbound calls only", "Basic analytics", "Email support"],
+        cta: "Get Started",
+        highlight: false,
     },
     {
-        name: "Omnichannel",
-        price: "₹25,000",
-        per: "/mo",
-        description: "Inbound and outbound working together to maximize booked meetings.",
-        features: ["Everything in Inbound & Outbound", "Shared Context Memory", "Advanced CRM Sync", "Dedicated Support Manager"],
-        cta: "Claim 1000 Free Mins",
-        popular: true,
+        name: "Growth",
+        price: "$99",
+        period: "/mo",
+        desc: "For growing sales teams ready to automate outbound too.",
+        features: ["5,000 minutes/month", "5 AI agents", "Inbound + Outbound", "CRM integration", "Real-time dashboard", "Priority support"],
+        cta: "Start Free Trial",
+        highlight: true,
+        badge: "Most Popular"
     },
     {
-        name: "Outbound Only",
-        price: "₹20,000",
-        per: "/mo",
-        description: "Targeted outbound campaigns powered by AI SDRs that follow up automatically.",
-        features: ["Targeted Campaigns", "Automated Callbacks", "Re-engagement cadences", "SMS/WhatsApp follow-ups"],
-        cta: "Start Outbound",
-        popular: false,
+        name: "HyperSonic",
+        price: "Custom",
+        period: "",
+        desc: "For enterprises with high call volumes and custom requirements.",
+        features: ["Unlimited minutes", "Unlimited agents", "Custom voice cloning", "On-premise option", "SLA guarantee", "Dedicated success manager"],
+        cta: "Book a Call",
+        highlight: false,
     },
 ];
 
 export default function Pricing() {
     return (
-        <section id="pricing" className="py-24 px-6 bg-white">
-            <div className="max-w-6xl mx-auto">
-
-                {/* Header */}
+        <section className="bg-[#060010] py-24 px-6 border-t border-white/5" id="pricing">
+            <div className="max-w-6xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-14"
+                    className="mb-16 md:text-center text-left"
                 >
-                    <div className="flex items-center gap-2 mb-4">
-                        <span className="text-[#7c6af5] text-xl font-light">└</span>
-                        <span className="section-label">Pricing</span>
-                        <span className="text-[#7c6af5] text-xl font-light">┐</span>
-                    </div>
-                    <h2 className="font-display text-4xl md:text-5xl font-extrabold text-[#18181B] tracking-tight mb-4">
-                        Simple, Transparent{" "}
-                        <span className="text-[#71717A]">Pricing.</span>
+                    <p className="text-[#A78BFA] text-sm font-medium tracking-widest uppercase mb-3">
+                        Pricing
+                    </p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 font-display tracking-tight leading-tight">
+                        Flexible Plans for Every Team
                     </h2>
-                    <p className="text-[#71717A] text-lg max-w-xl">
-                        Enterprise-grade AI voice agents at pricing built for growing businesses.
+                    <p className="text-white/50 max-w-lg mx-auto md:mx-auto ml-0 text-lg">
+                        Start free. Scale as you grow. No per-seat nonsense.
                     </p>
                 </motion.div>
 
-                {/* Cards */}
-                <div className="grid lg:grid-cols-3 gap-5 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={plan.name}
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className={plan.popular ? "lg:-translate-y-4" : ""}
+                            transition={{ delay: i * 0.15, duration: 0.5 }}
+                            className={`rounded-3xl p-8 flex flex-col gap-8 transition-all duration-300 relative overflow-hidden ${plan.highlight
+                                    ? "bg-[#7C3AED]/10 border border-[#7C3AED]/60 md:-translate-y-4 shadow-[0_0_50px_rgba(124,58,237,0.15)]"
+                                    : "bg-white/5 border border-white/10"
+                                }`}
                         >
-                            <div
-                                className={`rounded-[1.75rem] p-8 flex flex-col h-full border transition-all duration-300 ${plan.popular
-                                    ? "bg-[#18181B] border-[#27272A] shadow-[0_20px_60px_rgba(0,0,0,0.18)] hover:shadow-[0_28px_80px_rgba(0,0,0,0.25)]"
-                                    : "bg-white border-[#E4E4E7] shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.09)] hover:-translate-y-1"
-                                    }`}
-                            >
-                                {/* Popular badge */}
-                                {plan.popular && (
-                                    <div className="inline-flex items-center gap-1.5 bg-[#7c6af5] text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider mb-6 self-start">
-                                        <Sparkles size={10} />
-                                        Most Popular
-                                    </div>
-                                )}
+                            {/* Accent line top */}
+                            <div className={`absolute top-0 left-0 w-full h-1 ${plan.highlight ? "bg-[#7C3AED]" : "bg-white/10"}`} />
 
-                                <h3 className={`font-display text-base font-semibold mb-2 ${plan.popular ? "text-white/60" : "text-[#71717A]"}`}>
-                                    {plan.name}
-                                </h3>
-
-                                <div className="mb-4">
-                                    <span className={`font-display text-5xl font-extrabold tracking-tight ${plan.popular ? "text-white" : "text-[#18181B]"}`}>
-                                        {plan.price}
-                                    </span>
-                                    <span className={`text-sm ml-1 ${plan.popular ? "text-white/40" : "text-[#A1A1AA]"}`}>{plan.per}</span>
+                            <div className="flex flex-col gap-1.5 relative z-10">
+                                <div className="flex justify-between items-start">
+                                    <p className="text-white/50 text-sm font-semibold tracking-wide uppercase">{plan.name}</p>
+                                    {plan.badge && (
+                                        <span className="text-[10px] px-2.5 py-1 rounded-full bg-[#7C3AED] text-white font-bold tracking-widest shadow-sm">
+                                            {plan.badge.toUpperCase()}
+                                        </span>
+                                    )}
                                 </div>
-
-                                <p className={`text-sm mb-7 pb-7 border-b leading-relaxed ${plan.popular ? "text-white/50 border-white/10" : "text-[#71717A] border-[#E4E4E7]"}`}>
-                                    {plan.description}
+                                <div className="flex items-end gap-1 mt-2">
+                                    <span className="text-5xl font-black text-white font-display tracking-tight leading-none">{plan.price}</span>
+                                    {plan.period && <span className="text-white/50 text-base font-medium mb-1">{plan.period}</span>}
+                                </div>
+                                <p className="text-white/60 text-sm mt-4 leading-relaxed h-12">
+                                    {plan.desc}
                                 </p>
+                            </div>
 
-                                <ul className="space-y-3 mb-8 flex-1">
-                                    {plan.features.map((f) => (
-                                        <li key={f} className={`flex items-center gap-2.5 text-sm ${plan.popular ? "text-white/80" : "text-[#52525B]"}`}>
-                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.popular ? "bg-[#7c6af5]/20" : "bg-[#ede9fe]"}`}>
-                                                <Check size={11} className={plan.popular ? "text-[#9b8af8]" : "text-[#6d56eb]"} />
-                                            </div>
+                            <div className="flex-1">
+                                <ul className="flex flex-col gap-4">
+                                    {plan.features.map(f => (
+                                        <li key={f} className="flex items-start gap-3 text-sm text-white/80">
+                                            <span className="text-[#A78BFA] text-base shrink-0 leading-none mt-0.5">✓</span>
                                             {f}
                                         </li>
                                     ))}
                                 </ul>
-
-                                <button
-                                    className={`w-full py-3.5 rounded-2xl font-semibold text-sm transition-all flex items-center justify-center gap-2 ${plan.popular
-                                        ? "bg-white text-[#18181B] hover:bg-gray-100"
-                                        : "border border-[#18181B] text-[#18181B] hover:bg-[#18181B] hover:text-white"
-                                        }`}
-                                >
-                                    {plan.cta}
-                                    <ArrowUpRight size={14} />
-                                </button>
                             </div>
+
+                            <button
+                                className={`w-full py-4 rounded-xl font-bold tracking-wide text-sm transition-all duration-200 shadow-sm relative z-10 mt-2 ${plan.highlight
+                                        ? "bg-[#7C3AED] text-white hover:bg-[#6D28D9] shadow-[#7C3AED]/20 hover:shadow-[#7C3AED]/40 shadow-lg"
+                                        : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
+                                    }`}
+                            >
+                                {plan.cta}
+                            </button>
                         </motion.div>
                     ))}
                 </div>
-
-                <p className="text-center text-[#A1A1AA] text-sm mt-10">
-                    All plans include your first{" "}
-                    <span className="font-semibold text-[#18181B]">1,000 minutes free.</span>{" "}
-                    No credit card required.
-                </p>
             </div>
         </section>
     );

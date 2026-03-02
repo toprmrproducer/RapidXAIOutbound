@@ -1,83 +1,71 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+const footerColumns = [
+    { heading: "Product", links: ["Features", "Pricing", "Integrations", "Changelog"] },
+    { heading: "Company", links: ["About", "Blog", "Careers", "Contact"] },
+    { heading: "Legal", links: ["Privacy Policy", "Terms of Service", "Security", "GDPR"] },
+];
 
 export default function Footer() {
     return (
-        <footer className="bg-white pt-16 pb-8 border-t border-[#E4E4E7]">
-            <div className="max-w-6xl mx-auto px-6">
+        <footer className="bg-[#060010] border-t border-white/5 py-16 px-6 relative z-10">
+            <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 lg:gap-16">
 
-                {/* 4-column grid */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
-
-                    {/* Brand */}
-                    <div className="md:col-span-1">
-                        <a href="#" className="font-display text-2xl font-extrabold tracking-tight flex items-center gap-0 mb-3">
-                            <span className="text-[#18181B]">RapidX</span>
-                            <span className="text-[#7c6af5]">AI</span>
-                        </a>
-                        <p className="text-sm text-[#71717A] leading-relaxed">
-                            Enterprise-grade AI that helps you scale revenue — automatically.
-                        </p>
-                    </div>
-
-                    {/* Product */}
-                    <div>
-                        <h5 className="font-display font-bold text-[#18181B] mb-4 text-sm">Product</h5>
-                        <ul className="space-y-2.5 text-sm text-[#71717A]">
-                            <li><a href="#services" className="hover:text-[#7c6af5] transition-colors">Inbound Agent</a></li>
-                            <li><a href="#services" className="hover:text-[#7c6af5] transition-colors">Outbound Agent</a></li>
-                            <li><a href="#pricing" className="hover:text-[#7c6af5] transition-colors">Pricing</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Company */}
-                    <div>
-                        <h5 className="font-display font-bold text-[#18181B] mb-4 text-sm">Company</h5>
-                        <ul className="space-y-2.5 text-sm text-[#71717A]">
-                            <li>
-                                <a href="#" className="hover:text-[#7c6af5] transition-colors flex items-center gap-1">
-                                    LinkedIn <ArrowUpRight size={11} />
-                                </a>
-                            </li>
-                            <li><a href="#" className="hover:text-[#7c6af5] transition-colors">Twitter</a></li>
-                            <li><a href="#" className="hover:text-[#7c6af5] transition-colors">Contact Sales</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Newsletter */}
-                    <div>
-                        <h5 className="font-display font-bold text-[#18181B] mb-3 text-sm">Stay Updated</h5>
-                        <p className="text-xs text-[#71717A] mb-4 leading-relaxed">
-                            AI voice agent insights and product updates — straight to your inbox.
-                        </p>
-                        <div className="relative">
-                            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A1A1AA] text-sm select-none">@</span>
-                            <input
-                                type="email"
-                                placeholder="Enter your email..."
-                                className="w-full bg-[#F5F6F7] border border-[#E4E4E7] rounded-full py-3 pl-9 pr-12 text-sm outline-none focus:border-[#7c6af5] transition-colors text-[#18181B] placeholder:text-[#A1A1AA]"
-                            />
-                            <button className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#7c6af5] hover:bg-[#6d56eb] text-white p-2.5 rounded-full transition-colors">
-                                <ArrowUpRight size={14} />
-                            </button>
+                {/* Brand Column */}
+                <div className="col-span-2 flex flex-col gap-5">
+                    <span className="text-white font-bold text-xl font-display tracking-tight flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-md bg-gradient-to-tr from-[#7C3AED] to-[#A78BFA] flex items-center justify-center text-xs text-white shadow-sm">
+                            <span className="opacity-90">R</span>
                         </div>
+                        RapidX <span className="text-[#A78BFA] font-light">AI</span>
+                    </span>
+                    <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+                        India's most cost-effective enterprise AI voice platform. Built for reliability, security, and scale.
+                    </p>
+                    <div className="flex gap-3 mt-2">
+                        {["𝕏", "in", "▶"].map(icon => (
+                            <a
+                                key={icon}
+                                href="#"
+                                className="w-9 h-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/50 text-xs hover:border-[#7C3AED]/50 hover:text-white hover:bg-white/10 transition-colors duration-300"
+                            >
+                                {icon}
+                            </a>
+                        ))}
                     </div>
                 </div>
 
-                {/* Bottom bar */}
-                <div className="pt-8 border-t border-[#E4E4E7] flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-xs text-[#A1A1AA]">
-                        © {new Date().getFullYear()} RapidXAI Technologies. All rights reserved.
-                    </p>
-                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#A1A1AA] items-center">
-                        <a href="#" className="hover:text-[#18181B] transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-[#18181B] transition-colors">Terms of Service</a>
-                        <a href="#" className="hover:text-[#18181B] transition-colors">Cookie Settings</a>
-                        <span className="px-2 py-0.5 rounded text-[9px] font-bold tracking-widest uppercase border border-[#E4E4E7] text-[#A1A1AA]">SOC2</span>
-                        <span className="px-2 py-0.5 rounded text-[9px] font-bold tracking-widest uppercase border border-[#E4E4E7] text-[#A1A1AA]">GDPR</span>
+                {/* Link Columns */}
+                {footerColumns.map(col => (
+                    <div key={col.heading} className="flex flex-col gap-5">
+                        <p className="text-white/40 text-xs font-semibold tracking-widest uppercase">
+                            {col.heading}
+                        </p>
+                        <ul className="flex flex-col gap-3">
+                            {col.links.map(link => (
+                                <li key={link}>
+                                    <a href="#" className="text-white/70 text-sm hover:text-white hover:translate-x-1 block transition-all duration-200 w-fit">
+                                        {link}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+                ))}
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="max-w-6xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-white/30 text-xs font-medium">
+                    © {new Date().getFullYear()} RapidX AI. All rights reserved.
+                </p>
+                <div className="flex items-center gap-2 text-white/30 text-xs font-medium bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    All systems operational
                 </div>
+                <p className="text-white/30 text-xs font-medium">
+                    Built in India 🇮🇳
+                </p>
             </div>
         </footer>
     );

@@ -1,38 +1,34 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Metrics from "@/components/Metrics";
-import Comparison from "@/components/Comparison";
-import Services from "@/components/Services";
+import StatsBar from "@/components/StatsBar";
+import WhyRapidX from "@/components/WhyRapidX";
+import ProductShowcase from "@/components/ProductShowcase";
+import UseCaseTabs from "@/components/UseCaseTabs";
 import HowItWorks from "@/components/HowItWorks";
-import DemoChat from "@/components/DemoChat";
-import Benefits from "@/components/Benefits";
+import SecuritySection from "@/components/SecuritySection";
+import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+import Integrations from "@/components/Integrations";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F5F6F7] relative selection:bg-violet-500/20 overflow-x-hidden bg-noise">
+    <main className="min-h-screen bg-[#060010] text-white selection:bg-[#7C3AED] selection:text-white">
       <Navbar />
-
       <Hero />
-      <Metrics />
-
-      <Comparison />
-      <Services />
-
+      <StatsBar />
+      <WhyRapidX />
+      <ProductShowcase />
+      <UseCaseTabs />
       <HowItWorks />
-
-      <DemoChat />
-
+      <SecuritySection />
+      <Testimonials />
       <Pricing />
-
-      <Benefits />
-
       <FAQ />
-      <CTA />
-
+      <Integrations />
+      <FinalCTA />
       <Footer />
     </main>
   );
