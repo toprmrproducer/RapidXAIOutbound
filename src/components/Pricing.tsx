@@ -125,14 +125,16 @@ export default function Pricing() {
                                 </ul>
                             </div>
 
-                            <button
-                                className={`w-full py-4 rounded-xl font-bold tracking-wide text-[15px] transition-all duration-300 relative z-10 mt-2 ${plan.highlight
-                                    ? "bg-[#7C3AED] text-white hover:bg-[#6D28D9] shadow-lg shadow-[#7C3AED]/20"
-                                    : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
-                                    }`}
-                            >
-                                {plan.cta}
-                            </button>
+                            <a href="https://calendly.com/shreyasrajsony11/30min" target="_blank" rel="noopener noreferrer" className="w-full mt-2 relative z-10">
+                                <button
+                                    className={`w-full py-4 rounded-xl font-bold tracking-wide text-[15px] transition-all duration-300 ${plan.highlight
+                                        ? "bg-[#7C3AED] text-white hover:bg-[#6D28D9] shadow-lg shadow-[#7C3AED]/20"
+                                        : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
+                                        }`}
+                                >
+                                    Jump on a call
+                                </button>
+                            </a>
                         </motion.div>
                     ))}
                 </div>

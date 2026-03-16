@@ -124,7 +124,7 @@ export default function DemoSection() {
                     <p className="text-[17px] text-white/90">
                         Ready to deploy one of these voices in your business?
                     </p>
-                    <a href="#pricing">
+                    <a href="https://calendly.com/shreyasrajsony11/30min" target="_blank" rel="noopener noreferrer">
                         <button
                             className="px-8 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-200 hover:scale-[1.02]"
                             style={{
@@ -133,7 +133,7 @@ export default function DemoSection() {
                                 letterSpacing: "-0.01em",
                             }}
                         >
-                            See Pricing →
+                            Jump on a call →
                         </button>
                     </a>
                 </motion.div>

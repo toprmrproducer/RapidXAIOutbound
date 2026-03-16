@@ -55,13 +55,20 @@ export default function Footer() {
                                     {col.heading}
                                 </p>
                                 <ul className="flex flex-col gap-4">
-                                    {col.links.map(link => (
+                                    {col.links.map((link) => {
+                                        let href = "#";
+                                        if (link === "Pricing") href = "/#pricing";
+                                        if (link === "Privacy Policy") href = "/privacy";
+                                        if (link === "Terms of Service") href = "/terms";
+
+                                        return (
                                         <li key={link}>
-                                            <a href="#" className="text-[#9CA3AF] text-[14px] hover:text-[#A78BFA] transition-colors duration-200 block">
+                                            <a href={href} className="text-[#9CA3AF] text-[14px] hover:text-[#A78BFA] transition-colors duration-200 block">
                                                 {link}
                                             </a>
                                         </li>
-                                    ))}
+                                        )
+                                    })}
                                 </ul>
                             </div>
                         ))}

@@ -31,13 +31,17 @@ export default function FinalCTA() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
-                            <button className="px-8 py-4 bg-white text-[#060010] font-bold rounded-full hover:bg-white/90 transition-all duration-300 flex items-center justify-center gap-2 group w-full sm:w-auto shadow-[0_4px_20px_rgba(255,255,255,0.2)]">
-                                See Pricing
-                            </button>
-                            <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors w-full sm:w-auto backdrop-blur-sm flex items-center justify-center gap-2 group">
-                                Book Your Demo
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            <a href="#pricing" className="w-full sm:w-auto">
+                                <button className="px-8 py-4 bg-white text-[#060010] font-bold rounded-full hover:bg-white/90 transition-all duration-300 flex items-center justify-center gap-2 group w-full shadow-[0_4px_20px_rgba(255,255,255,0.2)]">
+                                    See Pricing
+                                </button>
+                            </a>
+                            <a href="https://calendly.com/shreyasrajsony11/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors w-full backdrop-blur-sm flex items-center justify-center gap-2 group">
+                                    Jump on a call
+                                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </a>
                         </div>
                     </div>
 

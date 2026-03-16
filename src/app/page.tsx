@@ -13,6 +13,7 @@ import FounderCallout from "@/components/FounderCallout";
 import FAQ from "@/components/FAQ";
 import Integrations from "@/components/Integrations";
 import FinalCTA from "@/components/FinalCTA";
+import FreeValueVideo from "@/components/FreeValueVideo";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
       <FounderCallout />
       <FAQ />
       <Integrations />
+      <FreeValueVideo />
       <FinalCTA />
       <Footer />
     </main>

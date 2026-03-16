@@ -173,20 +173,22 @@ export default function Hero() {
 
                         {/* Secondary ghost */}
                         <span className="text-sm font-medium text-white/60 mx-1">or</span>
-                        <button
-                            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm text-white transition-all duration-200"
-                            style={{
-                                background: "rgba(255,255,255,0.10)",
-                                border: "1px solid rgba(255,255,255,0.28)",
-                                backdropFilter: "blur(8px)",
-                                fontFamily: "'Inter', sans-serif",
-                            }}
-                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(124,58,237,0.12)")}
-                            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.10)")}
-                        >
-                            <PhoneCall size={14} style={{ color: "#c4b5fd" }} />
-                            Book a Free Call With Shreyas
-                        </button>
+                        <a href="https://calendly.com/shreyasrajsony11/30min" target="_blank" rel="noopener noreferrer">
+                            <button
+                                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm text-white transition-all duration-200"
+                                style={{
+                                    background: "rgba(255,255,255,0.10)",
+                                    border: "1px solid rgba(255,255,255,0.28)",
+                                    backdropFilter: "blur(8px)",
+                                    fontFamily: "'Inter', sans-serif",
+                                }}
+                                onMouseEnter={e => (e.currentTarget.style.background = "rgba(124,58,237,0.12)")}
+                                onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.10)")}
+                            >
+                                <PhoneCall size={14} style={{ color: "#c4b5fd" }} />
+                                Jump on a call
+                            </button>
+                        </a>
                     </motion.div>
 
                     {/* Trust line */}
