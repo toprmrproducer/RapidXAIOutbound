@@ -1,122 +1,142 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
 
-const useCases: Record<string, any> = {
-    sales: {
-        title: "Sales Automation",
-        desc: "AI agents that qualify inbound leads, run outbound campaigns, and hand off hot prospects to your closers in real time.",
-        features: ["Lead qualification calls", "Objection handling", "Calendar booking", "CRM sync"],
-    },
-    support: {
-        title: "Customer Support",
-        desc: "24/7 first-line support that resolves common queries, escalates complex issues, and never puts a customer on hold.",
-        features: ["FAQ handling", "Ticket creation", "Escalation routing", "Post-call summaries"],
-    },
-    reception: {
-        title: "AI Receptionist",
-        desc: "A professional front desk that greets callers, routes them to the right department, and captures every inquiry.",
-        features: ["Smart call routing", "Appointment scheduling", "Message taking", "Multi-language support"],
-    },
-};
+const demos = [
+    { industry: "REAL ESTATE", title: "Inbound Qualifier", duration: "1:24" },
+    { industry: "EDUCATION", title: "Outbound Follow-Up", duration: "0:58" },
+    { industry: "E-COMMERCE", title: "Customer Support", duration: "1:42" },
+    { industry: "HEALTHCARE", title: "Appointment Setter", duration: "1:15" },
+];
 
-const useCaseImages: Record<string, string> = {
-    sales: "/images/sales.png",
-    support: "/images/support.png",
-    reception: "/images/reception.png",
-};
+const voices = [
+    { name: "Priya", subtitle: "Warm & conversational · Hindi/English" },
+    { name: "Arjun", subtitle: "Confident & professional · English" },
+    { name: "Meera", subtitle: "Friendly & soft · Hindi" },
+    { name: "Dev", subtitle: "Assertive & sharp · Hinglish" },
+];
 
-export default function UseCaseTabs() {
-    const [activeTab, setActiveTab] = useState("sales");
+export default function DemoSection() {
+    const [activeVoice, setActiveVoice] = useState(0);
 
     return (
-        <section className="bg-[#060010] py-24 px-6 border-t border-white/5">
-            <div className="max-w-6xl mx-auto">
+        <section className="bg-[#08080C] py-28 px-6 border-t border-[#1E1E2E]">
+            <div className="max-w-[1100px] mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    className="mb-14"
                 >
-                    <p className="text-[#A78BFA] text-sm font-medium tracking-widest uppercase mb-3">
-                        Use Cases
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: "#7C3AED" }}>
+                        HEAR IT FOR YOURSELF
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 font-display tracking-tight">
-                        Built for every team
+                    <h2 className="font-bold text-white font-display tracking-tight leading-[1.1] mb-4"
+                        style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}>
+                        RapidXAI in Action.
                     </h2>
+                    <p style={{ color: "#9CA3AF", fontSize: "17px" }}>
+                        Don't read about it. Listen.
+                    </p>
                 </motion.div>
 
-                {/* Tabs */}
-                <div className="flex gap-3 mb-14 flex-wrap">
-                    {Object.keys(useCases).map((key) => (
-                        <button
-                            key={key}
-                            onClick={() => setActiveTab(key)}
-                            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === key
-                                ? "bg-[#7C3AED] text-white shadow-[0_0_20px_rgba(124,58,237,0.3)]"
-                                : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white"
-                                }`}
+                {/* 2x2 Grid of Demos */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 text-left">
+                    {demos.map((demo, i) => (
+                        <motion.div
+                            key={demo.title}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.08, duration: 0.5 }}
+                            whileHover={{ borderColor: "#7C3AED", backgroundColor: "rgba(124,58,237,0.04)" }}
+                            className="rounded-2xl p-7 flex items-center justify-between transition-colors duration-200 cursor-pointer group"
+                            style={{ background: "#0F0F14", border: "1px solid #1E1E2E", height: "140px" }}
                         >
-                            {useCases[key].title}
-                        </button>
+                            <div className="flex flex-col items-start gap-4">
+                                <span
+                                    className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase"
+                                    style={{ background: "rgba(124,58,237,0.12)", color: "#A855F7" }}
+                                >
+                                    {demo.industry}
+                                </span>
+                                <div className="text-white font-semibold" style={{ fontSize: "18px" }}>
+                                    {demo.title}
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-center gap-2">
+                                <div
+                                    className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 group-hover:scale-105"
+                                    style={{ background: "#7C3AED", boxShadow: "0 0 20px rgba(124,58,237,0.3)" }}
+                                >
+                                    <Play size={20} fill="white" className="text-white ml-1" />
+                                </div>
+                                <span style={{ color: "#9CA3AF", fontSize: "12px", fontWeight: 500 }}>
+                                    {demo.duration}
+                                </span>
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                {/* Tab Content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[380px]">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeTab}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 20 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex flex-col gap-6"
-                        >
-                            <h3 className="text-3xl font-bold text-white font-display">
-                                {useCases[activeTab].title}
-                            </h3>
-                            <p className="text-white/60 leading-relaxed text-lg">
-                                {useCases[activeTab].desc}
-                            </p>
-                            <ul className="flex flex-col gap-4 mt-2 mb-2">
-                                {useCases[activeTab].features.map((f: string) => (
-                                    <li key={f} className="flex items-center gap-3 text-white/80 shrink-0">
-                                        <div className="w-5 h-5 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/40 flex items-center justify-center text-[10px] text-[#A78BFA] shrink-0">
-                                            ✓
-                                        </div>
-                                        {f}
-                                    </li>
-                                ))}
-                            </ul>
-                            <button className="self-start flex items-center gap-2 mt-2 px-6 py-3 bg-white text-[#060010] font-bold rounded-full text-sm hover:bg-white/90 transition shadow-[0_4px_14px_rgba(255,255,255,0.15)] group">
-                                See it in action
-                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {/* Voice Picker */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center gap-4 mb-20"
+                >
+                    <p style={{ color: "#9CA3AF", fontSize: "14px", marginBottom: "4px" }}>
+                        Pick a voice. Hear the difference.
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-3">
+                        {voices.map((voice, idx) => (
+                            <button
+                                key={voice.name}
+                                onClick={() => setActiveVoice(idx)}
+                                className="px-5 py-2 rounded-full font-medium transition-colors"
+                                style={{
+                                    fontSize: "14px",
+                                    border: activeVoice === idx ? "1px solid #7C3AED" : "1px solid #2D2D3D",
+                                    background: activeVoice === idx ? "rgba(124,58,237,0.15)" : "transparent",
+                                    color: activeVoice === idx ? "#F8F8FF" : "#9CA3AF",
+                                }}
+                            >
+                                {voice.name}
                             </button>
-                        </motion.div>
-                    </AnimatePresence>
+                        ))}
+                    </div>
+                    <p style={{ color: "#9CA3AF", fontSize: "13px", marginTop: "4px" }}>
+                        {voices[activeVoice].subtitle}
+                    </p>
+                </motion.div>
 
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={`img-${activeTab}`}
-                            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -10 }}
-                            transition={{ duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
-                            className="w-full rounded-[24px] border border-white/10 bg-[#060010] p-3 min-h-[380px] flex items-center justify-center relative shadow-[0_20px_60px_-15px_rgba(124,58,237,0.3)] group overflow-hidden"
+                {/* CTA */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center gap-6"
+                >
+                    <p className="text-[17px] text-white/90">
+                        Ready to deploy one of these voices in your business?
+                    </p>
+                    <a href="#pricing">
+                        <button
+                            className="px-8 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-200 hover:scale-[1.02]"
+                            style={{
+                                background: "#7C3AED",
+                                boxShadow: "0 0 24px rgba(124,58,237,0.4)",
+                                letterSpacing: "-0.01em",
+                            }}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                            <div className="relative w-full h-full rounded-[16px] overflow-hidden border border-white/5 bg-[#0a001a] flex items-center justify-center min-h-[360px]">
-                                <img
-                                    src={useCaseImages[activeTab]}
-                                    alt={useCases[activeTab].title}
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                            See Pricing →
+                        </button>
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

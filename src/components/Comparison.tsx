@@ -3,92 +3,93 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle } from "lucide-react";
 
-const oldItems = [
-    "Costly and hard to scale teams",
-    "Missed calls outside business hours",
-    "Inconsistent following up with leads",
-    "Weeks to hire and train SDRs",
-    "Silos between comms and your CRM",
+const tableData = [
+    { feature: "Per-Minute Rate", cri: "₹3.5", agencies: "₹5 – ₹10", telecallers: "N/A" },
+    { feature: "Monthly Cost", cri: "From ₹7,000", agencies: "₹40K – ₹3L", telecallers: "₹15K–₹30K/head" },
+    { feature: "Setup Time", cri: "3–5 Days", agencies: "4–8 Weeks", telecallers: "Months" },
+    { feature: "24/7 Availability", cri: "✅", agencies: "partial", telecallers: "❌" },
+    { feature: "Hidden Charges", cri: "❌", agencies: "✅ Always", telecallers: "Varies" },
+    { feature: "Scales Instantly", cri: "✅", agencies: "❌", telecallers: "❌" },
 ];
 
-const newItems = [
-    "Market-breaking cost-effectiveness",
-    "24/7 Always-Available AI Receptionist",
-    "Persistent multi-step cadence follow-ups",
-    "Go live in days, not months",
-    "CRM-native: automatic notes & tasks",
-];
+const CellValue = ({ val }: { val: string }) => {
+    if (val === "✅") return <CheckCircle2 className="mx-auto" size={20} style={{ color: "#22C55E" }} />;
+    if (val === "❌") return <XCircle className="mx-auto" size={20} style={{ color: "#EF4444" }} />;
+    if (val === "partial") return <span style={{ color: "#F59E0B" }}>Partial</span>;
+    return <span>{val}</span>;
+};
 
 export default function Comparison() {
     return (
-        <section className="py-24 px-6 bg-[#F5F6F7]">
-            <div className="max-w-5xl mx-auto">
-
-                {/* Header */}
-                <div className="text-center mb-14">
-                    <h2 className="font-display font-extrabold text-[#18181B] tracking-tight mb-4 flex flex-col items-center gap-1">
-                        <span className="text-4xl md:text-5xl">What You're Doing Now</span>
-                        <span className="text-sm font-bold text-[#A1A1AA] uppercase tracking-[0.3em]">vs.</span>
-                        <span className="text-4xl md:text-5xl text-gradient-violet">What Actually Works</span>
-                    </h2>
-                    <p className="text-[#71717A] max-w-xl mx-auto text-lg">
-                        Most companies lose revenue because they respond too late. Here's the difference.
+        <section className="bg-[#08080C] py-28 px-6 border-t border-[#1E1E2E]" id="results">
+            <div className="max-w-[960px] mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12 text-center"
+                >
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: "#7C3AED" }}>
+                        THE HONEST COMPARISON
                     </p>
-                </div>
-
-                {/* Cards */}
-                <div className="grid md:grid-cols-2 gap-6">
-
-                    {/* Old Way — white card, red accent */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="card p-10 flex flex-col"
+                    <h2
+                        className="font-bold text-white font-display tracking-tight"
+                        style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wider mb-8 self-start">
-                            <XCircle size={14} />
-                            The Traditional Way
-                        </div>
+                        Why Businesses Choose RapidXAI.
+                    </h2>
+                </motion.div>
 
-                        <ul className="space-y-5">
-                            {oldItems.map((item, i) => (
-                                <li key={i} className="flex items-start gap-3">
-                                    <XCircle size={18} className="text-red-400 shrink-0 mt-0.5" />
-                                    <span className="text-[#52525B] text-[15px] leading-snug">{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-
-                    {/* RapidXAI Way — light lavender card */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.12 }}
-                        className="rounded-[1.75rem] p-10 flex flex-col relative overflow-hidden"
-                        style={{ background: "linear-gradient(140deg, #ede9fe 0%, #f3f0ff 100%)", border: "1px solid #ddd6fe" }}
+                <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+                    <div
+                        className="min-w-[700px] w-full overflow-hidden rounded-2xl"
+                        style={{ border: "1px solid #1E1E2E" }}
                     >
-                        {/* Soft violet radial wash top-right */}
-                        <div className="absolute top-0 right-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(109,86,235,0.08) 0%, transparent 70%)" }} />
-
-                        <div className="relative z-10">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8 self-start" style={{ background: "#ddd6fe", border: "1px solid #c4b5fd", color: "#5b21b6" }}>
-                                <CheckCircle2 size={14} />
-                                The Smarter Way with RapidXAI
+                        {/* Header Row */}
+                        <div
+                            className="grid grid-cols-4"
+                            style={{ background: "#0F0F14", borderBottom: "1px solid #1E1E2E" }}
+                        >
+                            <div className="p-4 pl-6 text-left" style={{ color: "#4B5563", fontSize: "13px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                                Feature
                             </div>
-
-                            <ul className="space-y-5">
-                                {newItems.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <CheckCircle2 size={18} className="shrink-0 mt-0.5" style={{ color: "#6d56eb" }} />
-                                        <span className="text-[#18181B] text-[15px] leading-snug font-medium">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="p-4 text-center relative" style={{ background: "rgba(124,58,237,0.08)" }}>
+                                <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: "#7C3AED" }} />
+                                <span className="font-bold" style={{ color: "#A855F7", fontSize: "15px" }}>✦ RapidXAI</span>
+                            </div>
+                            <div className="p-4 text-center font-semibold text-white/80" style={{ fontSize: "15px" }}>Other Agencies</div>
+                            <div className="p-4 text-center font-semibold text-white/80 pr-6" style={{ fontSize: "15px" }}>Telecallers</div>
                         </div>
-                    </motion.div>
+
+                        {/* Data Rows */}
+                        {tableData.map((row, i) => (
+                            <motion.div
+                                key={row.feature}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.04 }}
+                                className="grid grid-cols-4 group"
+                                style={{
+                                    borderBottom: i < tableData.length - 1 ? "1px solid #1E1E2E" : undefined,
+                                    background: i % 2 === 1 ? "rgba(255,255,255,0.01)" : "transparent",
+                                }}
+                            >
+                                <div className="p-4 pl-6 flex items-center font-medium" style={{ color: "#9CA3AF", fontSize: "15px" }}>
+                                    {row.feature}
+                                </div>
+                                <div className="p-4 text-center flex items-center justify-center font-bold" style={{ color: "#F8F8FF", fontSize: "15px", background: "rgba(124,58,237,0.02)" }}>
+                                    <CellValue val={row.cri} />
+                                </div>
+                                <div className="p-4 text-center flex items-center justify-center" style={{ color: "#9CA3AF", fontSize: "15px" }}>
+                                    <CellValue val={row.agencies} />
+                                </div>
+                                <div className="p-4 pr-6 text-center flex items-center justify-center" style={{ color: "#9CA3AF", fontSize: "15px" }}>
+                                    <CellValue val={row.telecallers} />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

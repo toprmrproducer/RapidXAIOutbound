@@ -5,12 +5,13 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-    { q: "How quickly can I go live?", a: "Most teams are fully live within 24 hours. Connect your number, configure your script, and flip the switch." },
-    { q: "Does it work with Indian phone numbers?", a: "Yes. RapidX AI works with all major Indian telecom providers including Airtel, Jio, and Vi." },
-    { q: "What languages does the AI support?", a: "Currently English and Hindi, with regional language support (Tamil, Telugu, Marathi) coming in Q2 2026." },
-    { q: "Can the AI transfer calls to a human?", a: "Yes. Set any condition to trigger a live transfer — hot lead detected, specific keyword spoken, or customer request." },
-    { q: "Is my data stored or used for training?", a: "No. All call data is encrypted at rest and in transit. We do not use your call recordings to train any models." },
-    { q: "How does pricing work for high volumes?", a: "HyperSonic plan includes unlimited minutes with a flat enterprise fee. Contact us for custom volume quotes." },
+    { q: "Is it really ₹7,000/month?", a: "Yes. Our Pilot Phase is ₹7,000/month and includes 1,000 minutes. After that, you pay ₹3.5 per minute. No hidden platform fees or mandatory onboarding costs." },
+    { q: "Can the agent transfer calls to my team?", a: "Absolutely. If a lead is hot, or if the AI doesn't know the answer, it can instantly transfer the call to the right human." },
+    { q: "How long does setup take?", a: "3 to 5 business days. You give us your script and requirements; we build, test, and deploy the agent for you." },
+    { q: "Does it work with Indian numbers?", a: "Yes. CR/AI works natively with Indian telecom providers. We can port your existing number or provide a new one." },
+    { q: "Does it speak Hindi?", a: "Yes. Our agents are fluent in English, Hindi, and natural Hinglish — perfect for the Indian market." },
+    { q: "Will my customers know they're talking to AI?", a: "Our latency is under 800ms, and our voice models reflect natural human breathing and intonation. Most callers never realize they aren't speaking to a human." },
+    { q: "What if it makes a mistake?", a: "We run rigorous guardrails on every agent. It stays strictly within the knowledge base and script you approve. If it gets confused, its default action is to transfer to a human." },
 ];
 
 export default function FAQ() {
@@ -29,7 +30,7 @@ export default function FAQ() {
                         FAQ
                     </p>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 font-display tracking-tight leading-tight">
-                        Curious about RapidX AI?
+                        Got Questions? We Got Answers.
                     </h2>
                 </motion.div>
 
@@ -43,8 +44,8 @@ export default function FAQ() {
                             transition={{ delay: i * 0.1 }}
                             onClick={() => setOpenFaq(openFaq === i ? null : i)}
                             className={`rounded-2xl border text-left overflow-hidden transition-all duration-300 w-full ${openFaq === i
-                                    ? "bg-white/10 border-[#7C3AED]/50 shadow-[0_4px_20px_rgba(124,58,237,0.1)]"
-                                    : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                ? "bg-white/10 border-[#7C3AED]/50 shadow-[0_4px_20px_rgba(124,58,237,0.1)]"
+                                : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
                                 }`}
                         >
                             <div className="flex items-center justify-between px-6 py-5 md:py-6 gap-4">

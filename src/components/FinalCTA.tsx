@@ -24,32 +24,32 @@ export default function FinalCTA() {
 
                     <div className="relative z-10 flex flex-col items-center text-center py-24 px-8 md:px-12 gap-6">
                         <h2 className="text-5xl md:text-6xl font-bold text-white max-w-2xl leading-tight font-display tracking-tight">
-                            Step Into RapidX AI — The Future of Sales
+                            Stop Bleeding Leads.<br />Start Your CR/AI Agent.
                         </h2>
                         <p className="text-white/70 max-w-lg text-lg mb-4">
-                            Start with 1,000 free minutes. No credit card required.
+                            Book a 15-minute onboarding call. We'll have your agent live in 3 days.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
                             <button className="px-8 py-4 bg-white text-[#060010] font-bold rounded-full hover:bg-white/90 transition-all duration-300 flex items-center justify-center gap-2 group w-full sm:w-auto shadow-[0_4px_20px_rgba(255,255,255,0.2)]">
-                                Book a Call
-                                <ArrowRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                See Pricing
                             </button>
-                            <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors w-full sm:w-auto backdrop-blur-sm">
-                                Get Free Minutes
+                            <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors w-full sm:w-auto backdrop-blur-sm flex items-center justify-center gap-2 group">
+                                Book Your Demo
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
                     </div>
 
                     {/* Large brand name at bottom like COSMOQ */}
                     <div className="relative z-0 text-center pb-8 pt-10 select-none pointer-events-none overflow-hidden flex justify-center">
-                        <span className="text-[clamp(80px,15vw,220px)] font-black leading-[0.7] tracking-tighter whitespace-nowrap opacity-90 transition-transform origin-bottom"
+                        <span className="text-[clamp(100px,20vw,300px)] font-black leading-[0.7] tracking-tighter whitespace-nowrap opacity-90 transition-transform origin-bottom mix-blend-overlay"
                             style={{
-                                background: 'linear-gradient(to bottom, rgba(167,139,250,0.5), rgba(124,58,237,0.05))',
+                                background: 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.0))',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
                             }}>
-                            RapidX AI
+                            CR/AI
                         </span>
                     </div>
                 </motion.div>

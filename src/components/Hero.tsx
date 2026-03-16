@@ -54,51 +54,7 @@ function TypewriterWord() {
     );
 }
 
-/* ── Deterministic waveform bars ── */
-const WAVE_BARS = Array.from({ length: 48 }, (_, i) => {
-    const norm = i / 47;
-    const env = Math.sin(norm * Math.PI);
-    const pr1 = ((i * 1234567) % 100) / 100;
-    const pr2 = ((i * 7654321) % 100) / 100;
-    const baseH = 4 + env * 28 + pr1 * 4;
-    const peakH = baseH * (1.3 + pr2 * 0.5);
-    return { baseH, peakH, delay: Math.sin(i * 0.3) * 0.4, dur: 0.55 + pr1 * 0.25 };
-});
-
-function VoiceWaveform() {
-    return (
-        <div className="flex flex-col items-center gap-3">
-            <div style={{ filter: "drop-shadow(0 0 14px rgba(167,139,250,0.55))" }}>
-                <svg width="300" height="56" viewBox="0 0 300 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#c4b5fd" stopOpacity="1" />
-                            <stop offset="100%" stopColor="#7c6af5" stopOpacity="0.2" />
-                        </linearGradient>
-                    </defs>
-                    {WAVE_BARS.map((b, i) => (
-                        <motion.rect
-                            key={i}
-                            x={i * 6.25}
-                            rx={2}
-                            width={3.5}
-                            fill="url(#wg2)"
-                            animate={{ height: [b.baseH, b.peakH, b.baseH], y: [56 - b.baseH, 56 - b.peakH, 56 - b.baseH] }}
-                            transition={{ duration: b.dur, delay: b.delay, repeat: Infinity, ease: "easeInOut", repeatType: "loop" }}
-                        />
-                    ))}
-                </svg>
-            </div>
-            <motion.span
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/50"
-            >
-                AI Listening…
-            </motion.span>
-        </div>
-    );
-}
+/* VoiceWaveform removed — was spawning 48 Framer Motion infinite loops */
 
 export default function Hero() {
     return (
@@ -115,6 +71,7 @@ export default function Hero() {
                     loop
                     playsInline
                     suppressHydrationWarning
+                    preload="metadata"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                     src="/hero-bg.mp4"
                 />
@@ -143,8 +100,8 @@ export default function Hero() {
                         transition={{ duration: 0.6 }}
                         className="mb-9 inline-flex items-center gap-2.5 px-5 py-2 rounded-full"
                         style={{
-                            background: "rgba(255,255,255,0.08)",
-                            border: "1px solid rgba(255,255,255,0.2)",
+                            background: "rgba(124,58,237,0.15)",
+                            border: "1px solid rgba(124,58,237,0.4)",
                             backdropFilter: "blur(10px)",
                         }}
                     >
@@ -152,8 +109,8 @@ export default function Hero() {
                             <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
                         </span>
-                        <span className="text-xs font-semibold text-white/80 tracking-wide">
-                            India's Most Cost-Effective Enterprise AI Voice
+                        <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "#A855F7" }}>
+                            💥 THE MARKET CHARGES ₹10/MIN. WE CHARGE ₹3.5.
                         </span>
                     </motion.div>
 
@@ -166,15 +123,19 @@ export default function Hero() {
                         style={{
                             fontFamily: "'Plus Jakarta Sans', sans-serif",
                             fontWeight: 900,
-                            fontSize: "clamp(2.6rem, 6vw, 4.8rem)",
+                            fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
                             color: "#ffffff",
-                            letterSpacing: "-0.03em",
+                            letterSpacing: "-0.02em",
                         }}
                     >
-                        Human-Like Voice AI,
-                        <br />
-                        Built for{" "}
-                        <TypewriterWord />
+                        Stop Paying for AI{" "}
+                        <span style={{
+                            background: "linear-gradient(90deg, #A855F7, #7C3AED)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                        }}>
+                            That's Been Robbing You.
+                        </span>
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -182,12 +143,10 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.22 }}
-                        className="text-base md:text-lg max-w-xl mb-11 leading-relaxed"
+                        className="text-base md:text-lg max-w-2xl mb-11 leading-relaxed"
                         style={{ color: "rgba(255,255,255,0.70)", fontFamily: "'Inter', sans-serif" }}
                     >
-                        Enterprise-grade AI voice agents that answer calls, qualify leads, and book meetings
-                        automatically. Your always-on SDR and receptionist — built for reliability, security,
-                        and real growth.
+                        RapidXAI gives every Indian business enterprise-grade AI voice agents — inbound, outbound, 24/7 — at the fairest pricing in the market.
                     </motion.p>
 
                     {/* CTA buttons */}
@@ -198,22 +157,22 @@ export default function Hero() {
                         className="flex flex-col sm:flex-row items-center gap-4 mb-14"
                     >
                         {/* Primary */}
-                        <button
-                            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-200"
-                            style={{
-                                background: "#18181B",
-                                boxShadow: "0 4px 20px rgba(0,0,0,0.45)",
-                                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                letterSpacing: "-0.01em",
-                            }}
-                            onMouseEnter={e => (e.currentTarget.style.background = "#09090B")}
-                            onMouseLeave={e => (e.currentTarget.style.background = "#18181B")}
-                        >
-                            Book a Call
-                            <ArrowUpRight size={15} />
-                        </button>
+                        <a href="#pricing">
+                            <button
+                                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-200 hover:scale-[1.02]"
+                                style={{
+                                    background: "#7C3AED",
+                                    boxShadow: "0 0 24px rgba(124,58,237,0.4)",
+                                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                                    letterSpacing: "-0.01em",
+                                }}
+                            >
+                                See Pricing →
+                            </button>
+                        </a>
 
                         {/* Secondary ghost */}
+                        <span className="text-sm font-medium text-white/60 mx-1">or</span>
                         <button
                             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm text-white transition-all duration-200"
                             style={{
@@ -222,11 +181,11 @@ export default function Hero() {
                                 backdropFilter: "blur(8px)",
                                 fontFamily: "'Inter', sans-serif",
                             }}
-                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
+                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(124,58,237,0.12)")}
                             onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.10)")}
                         >
                             <PhoneCall size={14} style={{ color: "#c4b5fd" }} />
-                            First 1000 mins FREE
+                            Book a Free Call With Shreyas
                         </button>
                     </motion.div>
 
@@ -235,10 +194,16 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.75 }}
-                        className="mt-10 text-[11px] tracking-widest uppercase"
-                        style={{ color: "rgba(255,255,255,0.30)", fontFamily: "'Inter', sans-serif" }}
+                        className="mt-10 text-[12px] md:text-[13px] tracking-wide"
+                        style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'Inter', sans-serif" }}
                     >
-                        SOC2-ready · 99.9% uptime · Sub-second response
+                        Starting at ₹7,000/month{" "}
+                        <span style={{ color: "#7C3AED" }}>·</span>{" "}
+                        1,000 minutes included{" "}
+                        <span style={{ color: "#7C3AED" }}>·</span>{" "}
+                        ₹3.5/min after that{" "}
+                        <span style={{ color: "#7C3AED" }}>·</span>{" "}
+                        No hidden fees. No BS.
                     </motion.p>
                 </div>
             </section>

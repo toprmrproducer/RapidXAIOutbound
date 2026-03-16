@@ -2,72 +2,79 @@
 
 import { motion } from "framer-motion";
 
-const features = [
+const cards = [
     {
-        icon: "🎙",
-        title: "Ultra-Low Latency Voice",
-        desc: "Sub-800ms response times using Sarvam AI and 11Labs — conversations feel real, not robotic.",
-        gradient: "from-purple-600 to-violet-900"
+        stat: "₹10",
+        headline: "What Others Charge Per Minute",
+        desc: "We charge ₹3.5. That's the entire difference.",
     },
     {
-        icon: "🔁",
-        title: "Always-On Automation",
-        desc: "No lunch breaks, no sick days. Your AI agent qualifies leads and books meetings 24/7.",
-        gradient: "from-indigo-600 to-purple-900"
+        stat: "62%",
+        headline: "Of Calls Go Unanswered",
+        desc: "Every missed ring is a lead walking to your competitor.",
     },
     {
-        icon: "📊",
-        title: "Real-Time Analytics",
-        desc: "Live dashboards showing call outcomes, lead quality scores, and conversion rates.",
-        gradient: "from-violet-600 to-purple-900"
-    },
-    {
-        icon: "🔒",
-        title: "Enterprise-Grade Security",
-        desc: "SOC2 compliant infrastructure. Your data stays yours — always encrypted, never shared.",
-        gradient: "from-purple-800 to-indigo-900"
+        stat: "8 Wks",
+        headline: "To Deploy With Legacy Platforms",
+        desc: "RapidXAI goes live in 3–5 days.",
     },
 ];
 
 export default function WhyRapidX() {
     return (
-        <section className="bg-[#060010] py-24 px-6">
-            <div className="max-w-6xl mx-auto">
+        <section className="bg-[#08080C] py-28 px-6 border-t border-[#1E1E2E]">
+            <div className="max-w-[1100px] mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-14 text-center"
                 >
-                    <p className="text-[#A78BFA] text-sm font-medium tracking-widest uppercase mb-3">
-                        Why RapidX AI
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-4" style={{ color: "#7C3AED" }}>
+                        WHY BUSINESSES SWITCH TO RAPIDXAI
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 max-w-xl font-display tracking-tight">
-                        What sets RapidX AI apart
+                    <h2
+                        className="font-bold text-white font-display tracking-tight leading-[1.1]"
+                        style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}
+                    >
+                        The Market Has Been{" "}
+                        <span style={{
+                            background: "linear-gradient(90deg, #A855F7, #7C3AED)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                        }}>
+                            Lying to You.
+                        </span>
                     </h2>
-                    <p className="text-white/50 max-w-lg leading-relaxed">
-                        Built from the ground up for Indian enterprises — lower cost, higher performance, and voice that actually sounds human.
-                    </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {features.map((feature, i) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {cards.map((card, i) => (
                         <motion.div
-                            key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            key={card.stat}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            className="rounded-2xl border border-white/10 bg-white/5 p-8 flex flex-col gap-4 hover:border-[#7C3AED]/50 hover:bg-white/10 transition-all duration-300 group"
+                            transition={{ delay: i * 0.06, duration: 0.5 }}
+                            whileHover={{
+                                borderColor: "rgba(239,68,68,0.4)",
+                                boxShadow: "0 0 0 1px rgba(239,68,68,0.3), 0 8px 32px rgba(239,68,68,0.08)",
+                                y: -2,
+                            }}
+                            className="rounded-2xl p-8 flex flex-col transition-all duration-200 cursor-default"
+                            style={{ background: "#0F0F14", border: "1px solid #1E1E2E" }}
                         >
-                            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform`}>
-                                {feature.icon}
-                            </div>
-                            <h3 className="text-white text-xl font-semibold font-display tracking-tight">
-                                {feature.title}
+                            <span
+                                className="font-black leading-none mb-5 font-display"
+                                style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#EF4444", letterSpacing: "-0.03em" }}
+                            >
+                                {card.stat}
+                            </span>
+                            <h3 className="text-white font-semibold mb-3" style={{ fontSize: "18px" }}>
+                                {card.headline}
                             </h3>
-                            <p className="text-white/55 text-sm leading-relaxed">
-                                {feature.desc}
+                            <p style={{ color: "#9CA3AF", fontSize: "15px", lineHeight: "1.6" }}>
+                                {card.desc}
                             </p>
                         </motion.div>
                     ))}

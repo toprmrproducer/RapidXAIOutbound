@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "RapidXAI — Book More Meetings, Automatically",
+  title: "CR/AI — AI Voice Agents for Every Indian Business",
   description:
     "Enterprise-grade AI inbound and outbound voice agents. Your 24/7 receptionist and SDR — built for India.",
 };
